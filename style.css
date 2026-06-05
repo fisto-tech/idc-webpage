@@ -1,0 +1,384 @@
+/* Reset and Prevent Master Document Scroll */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Lock viewport permanently */
+  background-color: #2b2b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Master Container Grid layout to hold everything on one page */
+.container {
+  display: grid;
+  grid-template-columns: 32% 68%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+/* =========================================
+   LEFT SIDE: BOOKSHELF SECTION
+   ========================================= */
+.bookshelf-section {
+  background: linear-gradient(rgba(44, 34, 25, 0.4), rgba(44, 34, 25, 0.4)), 
+              url('https://www.transparenttextures.com/patterns/dark-wall.png'), #5c4a3c;
+  background-blend-mode: overlay;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Match layout viewport */
+  border-right: 4px solid #1a1a1a;
+}
+
+.bookshelf-header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.bookshelf-header h1 { font-size: 1.5rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
+.bookshelf-header p { font-size: 0.8rem; opacity: 0.8; }
+
+/* Dynamic Scroll Container for Bookshelves */
+.shelves-scroll-container {
+  flex-grow: 1;
+  overflow-y: auto; /* Active scrolling if bookshelves exceed screen size */
+  padding-right: 5px;
+}
+
+.shelf-category {
+  margin-bottom: 25px;
+}
+
+.shelf-category h2 {
+  color: #e6dfd5;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.book-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 10px;
+  align-items: flex-end;
+  position: relative;
+  z-index: 2;
+}
+
+.book-cover {
+  width: 65px;
+  height: 90px;
+  background-color: #ddd;
+  box-shadow: -2px 0 4px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-cover:hover { transform: translateY(-5px); }
+.blank-book { background-color: #111; }
+
+.wood-shelf {
+  height: 12px;
+  background: linear-gradient(to bottom, #a07855, #3a220f);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   RIGHT SIDE: SHOWCASE AREA
+   ========================================= */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fcfcfc;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  position: relative;
+  border-bottom: none;
+  flex-shrink: 0;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+.logo-line {
+  height: 1px;
+  background-color: #111;
+  width: 40px;
+}
+
+.logo { padding: 0 10px; text-align: center; }
+.logo strong { font-size: 2rem; letter-spacing: 1px; display: block; font-weight: 800; line-height: 1; }
+.logo span { font-size: 0.6rem; display: block; color: #666; letter-spacing: 2px; }
+
+.header-title {
+  text-align: center;
+}
+.header-title h2 { font-size: 2rem; font-weight: 800; letter-spacing: 1px; color: #111; }
+.header-title p { font-size: 0.9rem; color: #666; margin-top: 5px; }
+
+/* Showcase inner container */
+.showcase-container {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  flex-grow: 1;
+  overflow: hidden; /* Block global layout escaping */
+}
+
+/* Scrollable Main Central Preview Area */
+.interactive-preview-scrollable {
+  padding: 40px;
+  background-color: #f4f5f6;
+  background-image: linear-gradient(135deg, #ffffff 30%, transparent 30%);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-text {
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.preview-text h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.preview-text p { font-size: 0.85rem; line-height: 1.4; color: #555; }
+
+.catalogue-mockup-frame {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalogue-mockup {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  background-color: #fff;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.mockup-page {
+  flex: 1;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-page {
+  border-right: 1px solid #ddd;
+  background: linear-gradient(to right, #fff 94%, #f1f1f1 100%);
+}
+
+.right-page {
+  background: linear-gradient(to left, #fff 94%, #e9e9e9 100%);
+}
+
+.audio-icon-sim {
+  width: 26px;
+  height: 26px;
+  background-color: #8bc34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.mockup-heading { font-size: 0.85rem; margin: 10px 0; }
+
+.video-box {
+  background: #222 url('https://via.placeholder.com/300x200?text=Engine+Blueprint') no-repeat center/cover;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-play-sim {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay Labels */
+.hotspot-label { 
+  position: absolute; 
+  background-color: #000; 
+  color: #fff; 
+  font-size: 0.7rem; 
+  padding: 6px 14px; 
+  border-radius: 4px; 
+  font-weight: 600;
+  z-index: 10;
+}
+.label-audio { top: 25%; left: -60px; }
+.label-images { bottom: 35%; left: -60px; }
+.label-video { right: -60px; top: 45%; }
+.label-animation { bottom: -50px; left: 45%; }
+
+/* Red dashed lines connecting hotspots */
+.hotspot-label::after {
+  content: '';
+  position: absolute;
+  border-style: dashed;
+  border-color: red;
+  border-width: 0;
+}
+.label-audio::after {
+  width: 100px;
+  border-bottom-width: 2px;
+  top: 50%;
+  left: 100%;
+}
+.label-images::after {
+  width: 50px;
+  border-bottom-width: 2px;
+  top: 50%;
+  left: 100%;
+}
+.label-video::before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  border-bottom: 2px dashed red;
+  top: 50%;
+  right: 100%;
+}
+.label-animation::after {
+  height: 40px;
+  border-left: 2px dashed red;
+  bottom: 100%;
+  left: 50%;
+}
+
+/* Little red arrows */
+.label-audio::before, .label-images::before {
+  content: '▶';
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  top: 50%;
+  left: calc(100% + 95px);
+  transform: translateY(-50%);
+}
+.label-images::before { left: calc(100% + 45px); }
+.label-video::after {
+  content: '◀';
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  top: 50%;
+  right: calc(100% + 65px);
+  transform: translateY(-50%);
+}
+.label-animation::before {
+  content: '▲';
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  bottom: calc(100% + 35px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* =========================================
+   RIGHT SIDE NAVIGATION PANEL
+   ========================================= */
+.feature-navigation {
+  background-color: #4a4a4a;
+  overflow-y: auto; /* Independent Navigation Scrollbar */
+  height: 100%;
+}
+
+/* make the nav inside the wrapper independently scrollable */
+.navigation-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+  max-width: 320px;
+  height: 100%;
+  overflow: hidden; /* keep outer layout fixed */
+}
+
+.feature-navigation {
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.feature-navigation ul { list-style: none; padding-top: 10px; }
+
+.feature-navigation li {
+  padding: 15px 20px;
+  color: #ccc;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.2s ease;
+  background-color: var(--bg);
+  clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);
+  margin-bottom: 2px;
+}
+
+.feature-navigation li:hover { color: #fff; padding-right: 25px; }
+.feature-navigation li.active { color: #fff; font-weight: 600; padding-right: 25px; }
+
+/* Scrollbar aesthetic customization for clean panels */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.feature-navigation::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}

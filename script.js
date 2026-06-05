@@ -6,19 +6,22 @@ const featureData = {
     visualHTML: `
       <div class="mockup-page left-page">
         <span class="hotspot-label label-audio">Audio</span>
-        <div class="page-content-box">
-          <div class="audio-icon-sim">🔊</div>
-          <p class="mockup-heading">BRING YOUR CATALOGUE <br><strong>TO LIFE</strong></p>
-          <div class="mockup-img-grid">
-            <div class="grid-img"><img src="https://via.placeholder.com/60x40" alt="thumb"></div>
-            <div class="grid-img"><img src="https://via.placeholder.com/60x40" alt="thumb"></div>
+        <div class="page-content-box" style="display:flex; flex-direction:column; height:100%; padding: 5px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <p class="mockup-heading" style="margin:0; font-size: 1rem; text-align:left;">BRING YOUR<br><strong>CATALOGUE</strong><br>TO <strong>LIFE</strong></p>
+            <div class="audio-icon-sim" style="background:#fff; color:#000; border:2px solid #8bc34a; font-size:1rem; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🔊</div>
           </div>
           <span class="hotspot-label label-images">Images</span>
+          <div class="mockup-img-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 15px;">
+            <div class="grid-img"><img src="https://picsum.photos/100/70?random=1" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+            <div class="grid-img"><img src="https://picsum.photos/100/70?random=2" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+            <div class="grid-img" style="grid-column: span 2;"><img src="https://picsum.photos/210/120?random=3" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+          </div>
         </div>
       </div>
-      <div class="mockup-page right-page">
-        <div class="page-content-box video-box">
-          <div class="video-play-sim">▶</div>
+      <div class="mockup-page right-page" style="padding:10px;">
+        <div class="page-content-box video-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=4') no-repeat center/cover; position:relative; border-radius:4px;">
+          <div class="video-play-sim" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; background:rgba(255,255,255,0.8); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer;">▶</div>
           <span class="hotspot-label label-video">Video</span>
         </div>
         <span class="hotspot-label label-animation">Animation</span>
@@ -29,17 +32,11 @@ const featureData = {
     title: "GIFs & Dynamic Animations",
     description: "Use animated GIFs and dynamic micro-interactions to draw attention, explain product features, and keep users engaged throughout the catalogue.",
     visualHTML: `
-      <div class="mockup-page left-page animated-page">
-        <div class="page-content-box animation-preview">
-          <div class="gif-frame">GIF</div>
-          <p class="mockup-text">Dynamic motion makes every product feel alive.</p>
-        </div>
+      <div class="mockup-page left-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=5') no-repeat center/cover; border-radius:4px;"></div>
       </div>
-      <div class="mockup-page right-page animated-page">
-        <div class="page-content-box animation-preview">
-          <div class="gif-frame">ANIM</div>
-          <p class="mockup-text">Seamless transitions and looping visual storytelling.</p>
-        </div>
+      <div class="mockup-page right-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=6') no-repeat center/cover; border-radius:4px;"></div>
       </div>
     `
   },
@@ -47,16 +44,14 @@ const featureData = {
     title: "Interactive Buttons & Hotspots",
     description: "Create actionable hotspots, buttons, and callouts that let buyers explore specs, previews, and purchase options directly from the catalogue.",
     visualHTML: `
-      <div class="mockup-page left-page action-page">
-        <div class="page-content-box">
-          <button class="action-button">Learn More</button>
-          <button class="action-button secondary">See Specs</button>
+      <div class="mockup-page left-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=7') no-repeat center/cover; border-radius:4px; position:relative;">
+           <div style="position:absolute; top:20%; left:20%; background:#fff; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem; box-shadow:0 4px 6px rgba(0,0,0,0.1); cursor:pointer;">+ Details</div>
         </div>
       </div>
-      <div class="mockup-page right-page action-page">
-        <div class="page-content-box">
-          <span class="hotspot-label label-hotspot">Hotspot</span>
-          <p class="mockup-text">Tap a callout to reveal product benefits instantly.</p>
+      <div class="mockup-page right-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=8') no-repeat center/cover; border-radius:4px; position:relative;">
+           <div style="position:absolute; bottom:15%; right:15%; background:#ff5722; color:#fff; padding:8px 20px; border-radius:4px; font-weight:bold; font-size:0.8rem; box-shadow:0 4px 6px rgba(0,0,0,0.2); cursor:pointer;">Buy Now</div>
         </div>
       </div>
     `
@@ -65,17 +60,11 @@ const featureData = {
     title: "Internal & External Linking",
     description: "Link catalogue sections to product pages, contact forms, or external campaigns for a seamless customer journey from discovery to conversion.",
     visualHTML: `
-      <div class="mockup-page left-page link-page">
-        <div class="page-content-box">
-          <p class="link-list"><a href="#">Product Detail</a></p>
-          <p class="link-list"><a href="#">Video Tour</a></p>
-        </div>
+      <div class="mockup-page left-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=9') no-repeat center/cover; border-radius:4px;"></div>
       </div>
-      <div class="mockup-page right-page link-page">
-        <div class="page-content-box">
-          <p class="link-list"><a href="#">Contact Us</a></p>
-          <p class="link-list"><a href="#">Order Now</a></p>
-        </div>
+      <div class="mockup-page right-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=10') no-repeat center/cover; border-radius:4px;"></div>
       </div>
     `
   },
@@ -83,19 +72,15 @@ const featureData = {
     title: "Lead Generation Form",
     description: "Capture buyer interest with an integrated enquiry and lead collection form directly inside the catalogue experience.",
     visualHTML: `
-      <div class="mockup-page left-page form-page">
-        <div class="page-content-box">
-          <label>Name</label>
-          <input type="text" placeholder="Your Full Name" disabled>
-          <label>Email</label>
-          <input type="email" placeholder="you@example.com" disabled>
-        </div>
+      <div class="mockup-page left-page" style="padding:10px;">
+        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=11') no-repeat center/cover; border-radius:4px;"></div>
       </div>
-      <div class="mockup-page right-page form-page">
-        <div class="page-content-box">
-          <label>Message</label>
-          <textarea placeholder="Ask about our catalogue solutions" disabled></textarea>
-          <button class="submit-button" disabled>Send Inquiry</button>
+      <div class="mockup-page right-page" style="padding:15px; display:flex; flex-direction:column; justify-content:center;">
+        <div class="page-content-box" style="background:#f9f9f9; padding:20px; border-radius:8px; border:1px solid #ddd; text-align:left;">
+          <h4 style="margin:0 0 15px 0; font-size:1rem; color:#333;">Request a Quote</h4>
+          <input type="text" placeholder="Your Name" style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;" disabled>
+          <input type="email" placeholder="Email Address" style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;" disabled>
+          <button style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:none; border-radius:4px; font-weight:bold;">Submit</button>
         </div>
       </div>
     `

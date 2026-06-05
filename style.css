@@ -29,25 +29,22 @@ html, body {
    LEFT SIDE: BOOKSHELF SECTION
    ========================================= */
 .bookshelf-section {
-  background: linear-gradient(rgba(44, 34, 25, 0.4), rgba(44, 34, 25, 0.4)), 
-              url('https://www.transparenttextures.com/patterns/dark-wall.png'), #5c4a3c;
-  background-blend-mode: overlay;
-  padding: 20px 15px;
+  background: radial-gradient(circle at center, #8a735c 0%, #4a3a2c 100%);
+  padding: 30px 15px;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Match layout viewport */
-  border-right: 4px solid #1a1a1a;
+  height: 100vh;
+  border-right: 2px solid #222;
 }
 
 .bookshelf-header {
   text-align: center;
-  color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   flex-shrink: 0;
 }
 
-.bookshelf-header h1 { font-size: 1.5rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
-.bookshelf-header p { font-size: 0.8rem; opacity: 0.8; }
+.bookshelf-header h1 { font-size: 2rem; color: #1a1a1a; font-weight: 800; margin-bottom: 5px; text-shadow: 1px 1px 2px rgba(255,255,255,0.2); }
+.bookshelf-header p { font-size: 0.85rem; color: #222; font-weight: 500; }
 
 /* Dynamic Scroll Container for Bookshelves */
 .shelves-scroll-container {
@@ -61,10 +58,10 @@ html, body {
 }
 
 .shelf-category h2 {
-  color: #e6dfd5;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  color: #f0f0f0;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
 .book-row {
@@ -117,42 +114,42 @@ html, body {
 .main-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px 30px;
+  justify-content: flex-start;
+  padding: 15px 40px;
   position: relative;
-  border-bottom: none;
+  border-top: 6px solid #2a6f97;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #ddd;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 30px;
-  top: 30px;
-}
-.logo-line {
-  height: 1px;
-  background-color: #111;
-  width: 40px;
-}
-
-.logo { padding: 0 10px; text-align: center; }
-.logo strong { font-size: 2rem; letter-spacing: 1px; display: block; font-weight: 800; line-height: 1; }
-.logo span { font-size: 0.6rem; display: block; color: #666; letter-spacing: 2px; }
+.logo { padding: 0; }
 
 .header-title {
+  flex-grow: 1;
   text-align: center;
 }
-.header-title h2 { font-size: 2rem; font-weight: 800; letter-spacing: 1px; color: #111; }
-.header-title p { font-size: 0.9rem; color: #666; margin-top: 5px; }
+.header-title h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; color: #111; }
+.header-title p { font-size: 1rem; color: #555; margin-top: 5px; }
+
+.header-right-shape {
+  position: absolute;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  background-color: #1a1a1a;
+  transform: skewX(-20deg);
+}
 
 /* Showcase inner container */
 .showcase-container {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 1fr 280px;
   flex-grow: 1;
-  overflow: hidden; /* Block global layout escaping */
+  overflow: hidden;
+  background-color: #211c1a; /* match nav background */
 }
 
 /* Scrollable Main Central Preview Area */
@@ -330,14 +327,28 @@ html, body {
   height: 100%;
 }
 
-/* make the nav inside the wrapper independently scrollable */
 .navigation-wrapper {
   display: flex;
   flex-direction: column;
   min-width: 260px;
   max-width: 320px;
   height: 100%;
-  overflow: hidden; /* keep outer layout fixed */
+  overflow: hidden;
+  position: relative;
+}
+
+.navigation-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -5%;
+  left: -80px;
+  width: 120px;
+  height: 110%;
+  background-color: #f4f5f6;
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: inset -5px 0 10px rgba(0,0,0,0.03);
 }
 
 .feature-navigation {
@@ -348,12 +359,14 @@ html, body {
   min-height: 0;
   flex: 1 1 auto;
   overflow: auto;
+  position: relative;
+  z-index: 1;
 }
 
-.feature-navigation ul { list-style: none; padding-top: 10px; }
+.feature-navigation ul { list-style: none; padding-top: 20px; padding-bottom: 20px; }
 
 .feature-navigation li {
-  padding: 15px 20px;
+  padding: 18px 20px;
   color: #ccc;
   font-size: 0.85rem;
   border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -361,8 +374,6 @@ html, body {
   text-align: right;
   transition: all 0.2s ease;
   background-color: var(--bg);
-  clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);
-  margin-bottom: 2px;
 }
 
 .feature-navigation li:hover { color: #fff; padding-right: 25px; }

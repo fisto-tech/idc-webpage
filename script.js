@@ -1,117 +1,137 @@
-// 1. Define the data content for different feature clicks
+const imageBase = "assets/images/content-images";
+
 const featureData = {
-  "media": {
+  media: {
     title: "Interactive Media Experience",
-    description: "Bring your catalogue to life with rich multimedia content. Showcase products using images, videos, audio, and animations to create a more engaging and immersive customer experience.",
-    visualHTML: `
-      <div class="mockup-page left-page">
-        <span class="hotspot-label label-audio">Audio</span>
-        <div class="page-content-box" style="display:flex; flex-direction:column; height:100%; padding: 5px;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-            <p class="mockup-heading" style="margin:0; font-size: 1rem; text-align:left;">BRING YOUR<br><strong>CATALOGUE</strong><br>TO <strong>LIFE</strong></p>
-            <div class="audio-icon-sim" style="background:#fff; color:#000; border:2px solid #8bc34a; font-size:1rem; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;">🔊</div>
-          </div>
-          <span class="hotspot-label label-images">Images</span>
-          <div class="mockup-img-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 15px;">
-            <div class="grid-img"><img src="https://picsum.photos/100/70?random=1" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
-            <div class="grid-img"><img src="https://picsum.photos/100/70?random=2" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
-            <div class="grid-img" style="grid-column: span 2;"><img src="https://picsum.photos/210/120?random=3" alt="thumb" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="mockup-page right-page" style="padding:10px;">
-        <div class="page-content-box video-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=4') no-repeat center/cover; position:relative; border-radius:4px;">
-          <div class="video-play-sim" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; background:rgba(255,255,255,0.8); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer;">▶</div>
-          <span class="hotspot-label label-video">Video</span>
-        </div>
-        <span class="hotspot-label label-animation">Animation</span>
-      </div>
-    `
+    description: "Bring your catalogue to life with rich multimedia content. Showcase products using images, videos, audio, and animations to create a more engaging and immersive customer experience",
+    image: `${imageBase}/interactive-media-experience.webp`
   },
-  "gifs": {
+  gifs: {
     title: "GIFs & Dynamic Animations",
-    description: "Use animated GIFs and dynamic micro-interactions to draw attention, explain product features, and keep users engaged throughout the catalogue.",
-    visualHTML: `
-      <div class="mockup-page left-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=5') no-repeat center/cover; border-radius:4px;"></div>
-      </div>
-      <div class="mockup-page right-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=6') no-repeat center/cover; border-radius:4px;"></div>
-      </div>
-    `
+    description: "Capture attention instantly with animated content and smooth visual effects that make your catalogue more interactive and engaging.",
+    image: `${imageBase}/gifs-and-dynamic-animations.webp`
   },
-  "buttons": {
-    title: "Interactive Buttons & Hotspots",
-    description: "Create actionable hotspots, buttons, and callouts that let buyers explore specs, previews, and purchase options directly from the catalogue.",
-    visualHTML: `
-      <div class="mockup-page left-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=7') no-repeat center/cover; border-radius:4px; position:relative;">
-           <div style="position:absolute; top:20%; left:20%; background:#fff; padding:5px 15px; border-radius:20px; font-weight:bold; font-size:0.8rem; box-shadow:0 4px 6px rgba(0,0,0,0.1); cursor:pointer;">+ Details</div>
-        </div>
-      </div>
-      <div class="mockup-page right-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=8') no-repeat center/cover; border-radius:4px; position:relative;">
-           <div style="position:absolute; bottom:15%; right:15%; background:#ff5722; color:#fff; padding:8px 20px; border-radius:4px; font-weight:bold; font-size:0.8rem; box-shadow:0 4px 6px rgba(0,0,0,0.2); cursor:pointer;">Buy Now</div>
-        </div>
-      </div>
-    `
+  buttons: {
+    title: "Interactive Buttons and Hotspots",
+    description: "Turn static pages into interactive experiences with clickable buttons, hotspots, and action-driven content.",
+    image: `${imageBase}/interactive-buttons-and-hotspots.webp`
   },
-  "linking": {
+  linking: {
     title: "Internal & External Linking",
-    description: "Link catalogue sections to product pages, contact forms, or external campaigns for a seamless customer journey from discovery to conversion.",
-    visualHTML: `
-      <div class="mockup-page left-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=9') no-repeat center/cover; border-radius:4px;"></div>
-      </div>
-      <div class="mockup-page right-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=10') no-repeat center/cover; border-radius:4px;"></div>
-      </div>
-    `
+    description: "Connect users directly to websites, products, landing pages, or specific catalogue sections with a single click.",
+    image: `${imageBase}/internal-and-external-linking.webp`
+  },
+  "smart-nav": {
+    title: "Smart Navigation & Table of Contents",
+    description: "Help users quickly find information through structured navigation and interactive content organization.",
+    image: `${imageBase}/smart-navigation.webp`
+  },
+  discovery: {
+    title: "Search & Content Discovery",
+    description: "Allow users to instantly find products and content through powerful search and category navigation.",
+    image: `${imageBase}/content-discovery.webp`
   },
   "lead-gen": {
-    title: "Lead Generation Form",
-    description: "Capture buyer interest with an integrated enquiry and lead collection form directly inside the catalogue experience.",
-    visualHTML: `
-      <div class="mockup-page left-page" style="padding:10px;">
-        <div class="page-content-box" style="height:100%; width:100%; background: url('https://picsum.photos/250/350?random=11') no-repeat center/cover; border-radius:4px;"></div>
-      </div>
-      <div class="mockup-page right-page" style="padding:15px; display:flex; flex-direction:column; justify-content:center;">
-        <div class="page-content-box" style="background:#f9f9f9; padding:20px; border-radius:8px; border:1px solid #ddd; text-align:left;">
-          <h4 style="margin:0 0 15px 0; font-size:1rem; color:#333;">Request a Quote</h4>
-          <input type="text" placeholder="Your Name" style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;" disabled>
-          <input type="email" placeholder="Email Address" style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;" disabled>
-          <button style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:none; border-radius:4px; font-weight:bold;">Submit</button>
-        </div>
-      </div>
-    `
+    title: "Lead Generation & Contact Forms",
+    description: "Convert visitors into potential customers with built-in forms and enquiry options.",
+    image: `${imageBase}/lead-generation-form.webp`
+  },
+  gallery: {
+    title: "Gallery & Library Experience",
+    description: "Organize products, catalogues, and media content in visually appealing gallery and library layouts.",
+    image: `${imageBase}/gallery-and-library.webp`
+  },
+  presentation: {
+    title: "Advanced Product Presentation",
+    description: "Present products in a more informative and interactive way to help customers make better decisions.",
+    image: `${imageBase}/product-presentation.webp`
+  },
+  "linking-prod": {
+    title: "Product Tags & Smart Product Linking",
+    description: "Connect related products and improve product discovery with intelligent product linking.",
+    image: `${imageBase}/smart-product-linking.webp`
+  },
+  embed: {
+    title: "Embedded Content Integration",
+    description: "Enhance your catalogue by embedding external content directly within pages.",
+    image: `${imageBase}/embedded-content.webp`
+  },
+  branding: {
+    title: "Branding & Customization",
+    description: "Customize every aspect of your catalogue to match your brand identity and create a professional experience.",
+    image: `${imageBase}/customised-branding.webp`
+  },
+  domain: {
+    title: "Custom Domain & White Label Branding",
+    description: "Deliver a fully branded experience using your own domain and company identity.",
+    image: `${imageBase}/custom-domain.webp`
+  },
+  flip: {
+    title: "Realistic Page Flip Experience",
+    description: "Access powerful viewing tools including zoom controls, full screen mode, page navigation, quick page access, sharing options, downloads, and background audio controls for a smooth and interactive reading experience.",
+    image: `${imageBase}/page-flip-effects.webp`
+  },
+  "360-view": {
+    title: "360\u00b0 Product Visualization",
+    description: "Allow customers to view products from every angle for a more immersive experience.",
+    image: `${imageBase}/360-product-visualisation.webp`
+  },
+  ar: {
+    title: "Augmented Reality (AR) Experience",
+    description: "Bring products into the real world with immersive AR experiences accessible through mobile devices.",
+    image: `${imageBase}/ar-experience.webp`
+  },
+  slideshow: {
+    title: "Automatic Slideshow",
+    description: "Enhance the viewing experience with automated page transitions and customizable slideshow controls.",
+    image: `${imageBase}/automatic-slideshow.webp`
+  },
+  mobile: {
+    title: "Designed for Every Screen",
+    description: "Enjoy a seamless viewing experience across smartphones, tablets, laptops, and desktops.",
+    image: `${imageBase}/designed-for-every-screen.webp`
+  },
+  analytics: {
+    title: "Analytics & Customer Insights",
+    description: "Track user engagement and gain valuable insights into customer behavior and content performance.",
+    image: `${imageBase}/analytics-and-customer-insights.webp`
+  },
+  fingertips: {
+    title: "Analytics & Customer Insights",
+    description: "Access powerful viewing tools including zoom controls, full screen mode, page navigation, quick page access, sharing options, downloads, and background audio controls for a smooth and interactive reading experience.",
+    image: `${imageBase}/everything-at-your-fingertips.webp`
   }
 };
 
-// elements
-const featureMenu = document.getElementById('feature-menu');
-const titleElement = document.getElementById('feature-title');
-const descriptionElement = document.getElementById('feature-description');
-const visualBox = document.getElementById('feature-visual-box');
+const featureMenu = document.getElementById("feature-menu");
+const titleElement = document.getElementById("feature-title");
+const descriptionElement = document.getElementById("feature-description");
+const visualImage = document.getElementById("feature-visual-image");
+const featureKeys = Array.from(featureMenu?.querySelectorAll("li[data-feature]") || [])
+  .map((item) => item.dataset.feature)
+  .filter((key) => featureData[key]);
 
-const featureKeys = Object.keys(featureData);
-let currentIndex = featureKeys.indexOf('media') >= 0 ? featureKeys.indexOf('media') : 0;
+const product360Item = featureMenu?.querySelector('li[data-feature="360-view"]');
+if (product360Item) product360Item.textContent = "360\u00b0 Product Visualization";
+
+let currentIndex = Math.max(featureKeys.indexOf("media"), 0);
 let rotateTimer = null;
 const ROTATE_MS = 5000;
 
 function setActiveFeature(featureKey) {
   const feature = featureData[featureKey];
   if (!feature) return;
-  if (titleElement) titleElement.textContent = feature.title;
-  if (descriptionElement) descriptionElement.textContent = feature.description;
-  if (visualBox) visualBox.innerHTML = feature.visualHTML;
 
-  if (featureMenu) {
-    featureMenu.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-    const selectedItem = featureMenu.querySelector(`li[data-feature="${featureKey}"]`);
-    if (selectedItem) {
-      selectedItem.classList.add('active');
-      selectedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  titleElement.textContent = feature.title;
+  descriptionElement.textContent = feature.description;
+  visualImage.src = feature.image;
+  visualImage.alt = `${feature.title} preview`;
+
+  featureMenu.querySelectorAll("li").forEach((item) => item.classList.remove("active"));
+  const selectedItem = featureMenu.querySelector(`li[data-feature="${featureKey}"]`);
+  if (selectedItem) {
+    selectedItem.classList.add("active");
+    selectedItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
 
@@ -127,27 +147,25 @@ function startAutoRotate() {
 }
 
 function stopAutoRotate() {
-  if (rotateTimer) {
-    clearInterval(rotateTimer);
-    rotateTimer = null;
-  }
+  if (!rotateTimer) return;
+  clearInterval(rotateTimer);
+  rotateTimer = null;
 }
 
-if (featureMenu) {
-  featureMenu.addEventListener('click', (event) => {
-    const clickedItem = event.target.closest('li[data-feature]');
-    if (!clickedItem) return;
-    const key = clickedItem.dataset.feature;
-    const idx = featureKeys.indexOf(key);
-    if (idx >= 0) currentIndex = idx;
-    setActiveFeature(key);
-    startAutoRotate(); // reset timer so user sees full interval
-  });
-}
+featureMenu?.addEventListener("click", (event) => {
+  const clickedItem = event.target.closest("li[data-feature]");
+  if (!clickedItem) return;
 
-window.addEventListener('DOMContentLoaded', () => {
+  const key = clickedItem.dataset.feature;
+  const index = featureKeys.indexOf(key);
+  if (index >= 0) currentIndex = index;
+  setActiveFeature(key);
+  startAutoRotate();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
   setActiveFeature(featureKeys[currentIndex] || featureKeys[0]);
   startAutoRotate();
 });
 
-window.addEventListener('beforeunload', stopAutoRotate);
+window.addEventListener("beforeunload", stopAutoRotate);

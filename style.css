@@ -154,32 +154,35 @@ html, body {
   height: 100vh;
   background-color: #eef2f2;
   overflow: hidden;
+  position: relative;
 }
 
 .main-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 112px;
-  padding: 13px 34px 18px;
+  min-height: 90px;
+  padding: 10px 24px 12px;
   position: relative;
+  z-index: 15;
   background: linear-gradient(105deg, rgba(242,245,245,0.96) 0%, rgba(229,234,234,0.92) 82%, transparent 82%);
   border-top: 5px solid #2a6f97;
   border-bottom: 0;
   flex-shrink: 0;
   overflow: visible;
-  z-index: 8;
+  z-index: 15;
+  width: calc(100% - clamp(205px, 16vw, 300px));
 }
 
 .logo {
   padding: 0;
-  flex: 0 0 170px;
+  flex: 0 0 150px;
   position: relative;
   z-index: 2;
 }
 
 .logo img {
-  max-height: 72px !important;
+  max-height: 58px !important;
   width: auto;
   display: block;
 }
@@ -193,7 +196,7 @@ html, body {
 
 .header-title h2 {
   font-family: "Merriweather Sans", sans-serif;
-  font-size: clamp(2rem, 3vw, 3.55rem);
+  font-size: clamp(1.5rem, 1.8vw, 2.1rem);
   font-weight: 800;
   letter-spacing: 0;
   color: #030303;
@@ -202,15 +205,15 @@ html, body {
 
 .header-title p {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.9rem, 1.25vw, 1.45rem);
+  font-size: clamp(0.7rem, 0.9vw, 1rem);
   color: #6e6e6e;
-  margin-top: 12px;
+  margin-top: 4px;
   font-weight: 400;
 }
 
 .header-right-shape {
   position: absolute;
-  right: -68px;
+  right: 0;
   top: 0;
   bottom: 0;
   width: 190px;
@@ -223,7 +226,7 @@ html, body {
 /* Showcase inner container */
 .showcase-container {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(220px, 18vw, 320px);
+  grid-template-columns: minmax(0, 1fr) clamp(205px, 16vw, 300px);
   flex-grow: 1;
   overflow: hidden;
   background-color: #403f3d;
@@ -232,7 +235,7 @@ html, body {
 
 /* Scrollable Main Central Preview Area */
 .interactive-preview-scrollable {
-  padding: clamp(36px, 5vw, 92px) clamp(44px, 7vw, 112px) 34px clamp(42px, 5vw, 78px);
+  padding: clamp(34px, 4.1vw, 72px) clamp(34px, 5vw, 82px) 28px clamp(42px, 5vw, 78px);
   background:
     linear-gradient(118deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.72) 20%, transparent 20%),
     linear-gradient(63deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.42) 11%, transparent 11%),
@@ -249,8 +252,8 @@ html, body {
   content: '';
   position: absolute;
   top: -18%;
-  right: clamp(-250px, -19vw, -130px);
-  width: clamp(330px, 31vw, 570px);
+  right: clamp(-235px, -17vw, -118px);
+  width: clamp(330px, 29vw, 520px);
   height: 136%;
   border-radius: 50%;
   background: rgba(247,250,250,0.96);
@@ -261,26 +264,26 @@ html, body {
 
 .preview-text {
   flex-shrink: 0;
-  margin-bottom: clamp(28px, 6vh, 76px);
-  max-width: min(900px, 78%);
+  margin-bottom: clamp(14px, 2.7vh, 34px);
+  max-width: min(850px, 76%);
   position: relative;
   z-index: 2;
 }
 
 .preview-text h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.45rem, 2.45vw, 3rem);
-  line-height: 1.12;
+  font-size: clamp(1.35rem, 1.92vw, 2.42rem);
+  line-height: 1.15;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   color: #020202;
   letter-spacing: 0;
 }
 
 .preview-text p {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.92rem, 1.35vw, 1.66rem);
-  line-height: 1.55;
+  font-size: clamp(0.78rem, 1.08vw, 1.32rem);
+  line-height: 1.46;
   color: #555;
   font-weight: 400;
 }
@@ -300,8 +303,8 @@ html, body {
 }
 
 .feature-visual-image {
-  width: min(82%, 980px);
-  max-height: 100%;
+  width: min(96%, 1160px);
+  max-height: calc(100vh - 315px);
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 10px 16px rgba(0,0,0,0.14));
@@ -467,27 +470,32 @@ html, body {
 .navigation-wrapper {
   display: flex;
   flex-direction: column;
-  min-width: 220px;
-  max-width: 340px;
-  height: 100%;
+  min-width: 205px;
+  max-width: 300px;
+  width: clamp(205px, 16vw, 300px);
+  height: 100vh;
   overflow: visible;
-  position: relative;
-  background: linear-gradient(180deg, #1f1917 0%, #7b756d 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f7fafa;
+  z-index: 1;
 }
 
 .navigation-wrapper::before {
   content: '';
   position: absolute;
-  top: -24%;
-  left: clamp(-360px, -25vw, -230px);
-  width: clamp(380px, 31vw, 570px);
-  height: 148%;
+  top: -20%;
+  right: calc(100% - 35px);
+  width: 600px;
+  height: 140%;
   background: #f7fafa;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 5;
   pointer-events: none;
-  box-shadow: 14px 0 22px rgba(0,0,0,0.18);
 }
+
+
 
 .feature-navigation {
   background-color: transparent;
@@ -496,9 +504,8 @@ html, body {
   flex-direction: column;
   min-height: 0;
   flex: 1 1 auto;
-  overflow: auto;
   position: relative;
-  z-index: 4;
+  overflow-y: auto;
 }
 
 .feature-navigation ul {
@@ -507,12 +514,12 @@ html, body {
 }
 
 .feature-navigation li {
-  min-height: clamp(27px, 3.75vh, 60px);
-  padding: 0 clamp(16px, 1.5vw, 28px) 0 clamp(22px, 2vw, 42px);
+  min-height: clamp(28px, 5vh, 54px);
+  padding: 0 clamp(12px, 1.15vw, 22px) 0 clamp(44px, 4vw, 54px);
   color: #ececec;
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.62rem, 0.8vw, 1.25rem);
-  line-height: 1.15;
+  font-size: clamp(0.56rem, 0.69vw, 1.05rem);
+  line-height: 1.12;
   border-bottom: 1px solid rgba(0,0,0,0.23);
   border-top: 1px solid rgba(255,255,255,0.05);
   cursor: pointer;
@@ -524,6 +531,7 @@ html, body {
   justify-content: center;
   position: relative;
   isolation: isolate;
+  z-index: 1;
 }
 
 .feature-navigation li::before {
@@ -542,18 +550,9 @@ html, body {
   color: #fff;
   font-weight: 600;
   background: #24201e !important;
-}
-
-.feature-navigation li.active::after {
-  content: '';
-  position: absolute;
-  left: clamp(-34px, -2.2vw, -18px);
-  top: 0;
-  bottom: 0;
-  width: clamp(38px, 3vw, 58px);
-  background: #24201e;
-  clip-path: polygon(28% 0, 100% 0, 72% 100%, 0 100%);
-  z-index: -1;
+  z-index: 6;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%);
+  padding-left: clamp(24px, 2.5vw, 34px);
 }
 
 /* Scrollbar aesthetic customization for clean panels */

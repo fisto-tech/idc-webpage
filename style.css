@@ -166,7 +166,6 @@ html, body {
   position: relative;
   z-index: 15;
   background: linear-gradient(105deg, rgba(242,245,245,0.96) 0%, rgba(229,234,234,0.92) 82%, transparent 82%);
-  border-top: 5px solid #2a6f97;
   border-bottom: 0;
   flex-shrink: 0;
   overflow: visible;
@@ -218,8 +217,8 @@ html, body {
   bottom: 0;
   width: 190px;
   background: #1b1715;
-  transform: skewX(25deg);
-  transform-origin: bottom left;
+  transform: skewX(-25deg);
+  transform-origin: bottom right;
   z-index: 3;
 }
 

@@ -10,7 +10,8 @@
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -57,7 +58,7 @@ html, body {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 5px;
-  text-shadow: 0 1px 1px rgba(255,255,255,0.25);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 .bookshelf-header p {
@@ -87,7 +88,7 @@ html, body {
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 1vw 15px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.75);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 }
 
 .book-row {
@@ -122,7 +123,7 @@ html, body {
 
 .blank-book {
   background: #090909;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .wood-shelf {
@@ -159,7 +160,10 @@ html, body {
 .main-header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  /* center header title horizontally */
+  position: relative;
+  /* allow absolute-positioning of logo */
   min-height: 90px;
   padding: 18px 24px 20px;
   background: #ffffff;
@@ -172,12 +176,15 @@ html, body {
 
 .logo {
   flex: 0 0 auto;
-  /* border: 2px solid #1a1a1a; */
   padding: 5px 10px 5px 8px;
   display: flex;
   align-items: center;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  /* take out of flow so title can be centered */
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
 }
 
 .logo img {
@@ -191,8 +198,10 @@ html, body {
   text-align: center;
   position: relative;
   z-index: 2;
-  /* nudge left so title is centred in the visible (non-nav) area */
-  padding-right: clamp(205px, 16vw, 300px);
+  /* keep the visual title centered within the visible content area
+     (reserve space on the right equal to the nav width so the overlapping
+     nav doesn't visually shift the perceived center) */
+  padding-right: 8vw;
 }
 
 .header-title h2 {
@@ -216,7 +225,7 @@ html, body {
    ========================================= */
 .showcase-container {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(205px, 16vw, 300px);
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 20vw, 310px);
   flex-grow: 1;
   overflow: hidden;
   background-color: #fbfcfc;
@@ -227,14 +236,11 @@ html, body {
    CENTRAL PREVIEW AREA
    ========================================= */
 .interactive-preview-scrollable {
-  padding: clamp(20px, 2.5vw, 44px)
-         clamp(20px, 3vw, 48px)
-         16px
-         clamp(24px, 3vw, 46px);
+  padding: clamp(20px, 2.5vw, 44px) clamp(20px, 3vw, 48px) 16px clamp(24px, 3vw, 46px);
   background:
-    linear-gradient(118deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.72) 20%, transparent 20%),
-    linear-gradient(63deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.42) 11%, transparent 11%),
-    radial-gradient(ellipse 120% 115% at 38% 50%, rgba(255,255,255,0.82) 0%, rgba(250,252,252,0.84) 58%, rgba(226,232,232,0.78) 100%);
+    linear-gradient(118deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.72) 20%, transparent 20%),
+    linear-gradient(63deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.42) 11%, transparent 11%),
+    radial-gradient(ellipse 120% 115% at 38% 50%, rgba(255, 255, 255, 0.82) 0%, rgba(250, 252, 252, 0.84) 58%, rgba(226, 232, 232, 0.78) 100%);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -293,7 +299,7 @@ html, body {
   max-height: calc(100vh - 40vh);
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 10px 16px rgba(0,0,0,0.14));
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.14));
 }
 
 /* mockup kept hidden */
@@ -303,7 +309,7 @@ html, body {
   max-width: 600px;
   height: 350px;
   background-color: #fff;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   position: relative;
 }
 
@@ -337,7 +343,10 @@ html, body {
   font-size: 0.7rem;
 }
 
-.mockup-heading { font-size: 0.85rem; margin: 10px 0; }
+.mockup-heading {
+  font-size: 0.85rem;
+  margin: 10px 0;
+}
 
 .video-box {
   background: #222;
@@ -350,7 +359,7 @@ html, body {
 .video-play-sim {
   width: 35px;
   height: 35px;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -367,10 +376,26 @@ html, body {
   font-weight: 600;
   z-index: 10;
 }
-.label-audio { top: 25%; left: -60px; }
-.label-images { bottom: 35%; left: -60px; }
-.label-video { right: -60px; top: 45%; }
-.label-animation { bottom: -50px; left: 45%; }
+
+.label-audio {
+  top: 25%;
+  left: -60px;
+}
+
+.label-images {
+  bottom: 35%;
+  left: -60px;
+}
+
+.label-video {
+  right: -60px;
+  top: 45%;
+}
+
+.label-animation {
+  bottom: -50px;
+  left: 45%;
+}
 
 .hotspot-label::after {
   content: '';
@@ -379,8 +404,21 @@ html, body {
   border-color: red;
   border-width: 0;
 }
-.label-audio::after { width: 100px; border-bottom-width: 2px; top: 50%; left: 100%; }
-.label-images::after { width: 50px; border-bottom-width: 2px; top: 50%; left: 100%; }
+
+.label-audio::after {
+  width: 100px;
+  border-bottom-width: 2px;
+  top: 50%;
+  left: 100%;
+}
+
+.label-images::after {
+  width: 50px;
+  border-bottom-width: 2px;
+  top: 50%;
+  left: 100%;
+}
+
 .label-video::before {
   content: '';
   position: absolute;
@@ -389,9 +427,16 @@ html, body {
   top: 50%;
   right: 100%;
 }
-.label-animation::after { height: 40px; border-left: 2px dashed red; bottom: 100%; left: 50%; }
 
-.label-audio::before, .label-images::before {
+.label-animation::after {
+  height: 40px;
+  border-left: 2px dashed red;
+  bottom: 100%;
+  left: 50%;
+}
+
+.label-audio::before,
+.label-images::before {
   content: '▶';
   position: absolute;
   color: red;
@@ -400,7 +445,11 @@ html, body {
   left: calc(100% + 95px);
   transform: translateY(-50%);
 }
-.label-images::before { left: calc(100% + 45px); }
+
+.label-images::before {
+  left: calc(100% + 45px);
+}
+
 .label-video::after {
   content: '◀';
   position: absolute;
@@ -410,6 +459,7 @@ html, body {
   right: calc(100% + 65px);
   transform: translateY(-50%);
 }
+
 .label-animation::before {
   content: '▲';
   position: absolute;
@@ -424,128 +474,197 @@ html, body {
    RIGHT NAVIGATION PANEL
    ========================================= */
 .navigation-wrapper {
-  min-width: 205px;
-  max-width: 300px;
-  width: clamp(205px, 16vw, 300px);
+  width: clamp(260px, 20vw, 310px);
   height: 100vh;
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 999;
   display: flex;
   flex-direction: column;
-  background: black;
-  overflow: visible;
-  /* Concave left edge — polygon approximates an inward curve using midpoint steps */
-/* clip-path: polygon(
-  0% 0%,
-  100% 0%,
-  100% 100%,
-  0% 100%,
-
-  6% 99%,
-  11% 96%,
-  17% 90%,
-  22% 82%,
-  26% 72%,
-  29% 61%,
-  31% 50%,
-  29% 39%,
-  26% 28%,
-  22% 18%,
-  17% 10%,
-  53% 5%,
-  8% 1%
-) */
-}
-
-/* No bleeding pseudo-element — concave curve is handled via clip-path on the nav itself */
-.navigation-wrapper::before {
-  display: none;
+  background: linear-gradient(180deg, #0a1628 0%, #111d33 50%, #0d1a2e 100%);
+  border-radius: 24px 0 0 24px;
+  box-shadow: -6px 0 30px rgba(0, 0, 0, 0.3);
+  padding: 12px 6px 12px 10px;
+  overflow: hidden;
 }
 
 .feature-navigation {
   position: relative;
-  z-index: 5;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   background: transparent;
-  margin-top: 100px; /* push below header */
+  margin-top: 0;
 }
 
 .feature-navigation ul {
   list-style: none;
   padding: 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0;
 }
 
-/* Each nav item — equal height, right-aligned text */
+/* Each nav item */
 .feature-navigation li {
-  flex: 1 1 0;
-  min-height: 0;
-padding: clamp(6px, 0.8vw, 10px)
-         clamp(15px, 1.55vw, 26px)
-         clamp(6px, 0.8vw, 10px)
-         9px;
-  color: #ccc5bc;
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.624rem, 0.792vw, 1.008rem);
-  font-weight: 400;
-  line-height: 1.2;
-  border-bottom: 1px solid rgba(0,0,0,0.22);
-  cursor: pointer;
-  /* RIGHT-ALIGNED text as in target */
-  text-align: right;
-  transition: background-color 0.18s ease, color 0.18s ease;
-
-  /* Smooth dark-charcoal → medium-taupe gradient top to bottom */
-  /* item 0 = darkest (#252120), item 19 = medium taupe (#8a7f75) */
-  background-color: hsl(
-    22,
-    calc(6% + var(--i) * 1.3%),
-    calc(13% + var(--i) * 2.1%)
-  );
-
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  position: relative;
-  isolation: isolate;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 0;
+  padding: clamp(10px, 1.2vh, 14px) 14px clamp(10px, 1.2vh, 14px) 12px;
+  color: rgba(220, 225, 235, 0.85);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.72rem, 0.82vw, 0.88rem);
+  font-weight: 400;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  line-height: 1.3;
 }
 
-/* Subtle inner shading */
-.feature-navigation li::before {
+/* Subtle divider between items */
+.feature-navigation li::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.10) 100%);
-  z-index: -1;
-  pointer-events: none;
+  bottom: 0;
+  left: 48px;
+  right: 14px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
+.feature-navigation li:last-child::after,
+.feature-navigation li.active::after,
+.feature-navigation li.active + li::after,
+.feature-navigation li:hover::after {
+  display: none;
+}
+
+/* Icon container */
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  flex-shrink: 0;
+  color: rgba(180, 190, 210, 0.7);
+  transition: all 0.3s ease;
+}
+
+.nav-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Text label */
+.nav-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right arrow (hidden by default, shown on active) */
+.nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Hover state */
 .feature-navigation li:hover {
+  background: rgba(255, 255, 255, 0.04);
   color: #ffffff;
-  filter: brightness(1.18);
 }
 
-/* Active item — darkest charcoal, bold white text, no clip-path */
+.feature-navigation li:hover .nav-icon {
+  color: rgba(220, 225, 240, 0.95);
+}
+
+/* Active item — gold metallic gradient */
 .feature-navigation li.active {
-  background-color: #1c1917 !important;
+  background: linear-gradient(135deg, #c9a84c 0%, #b08d3a 40%, #917430 100%) !important;
+  border: 1px solid rgba(218, 190, 130, 0.45);
   color: #ffffff !important;
   font-weight: 600;
-  clip-path: none;
-  z-index: 6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  margin: 2px 0;
+  border-radius: 14px;
+}
+
+.feature-navigation li.active .nav-icon {
+  color: #ffffff;
+}
+
+.feature-navigation li.active .nav-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* =========================================
    SCROLLBARS
    ========================================= */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.25); border-radius: 10px; }
-.feature-navigation::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.feature-navigation::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}

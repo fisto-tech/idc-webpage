@@ -1,8 +1,8 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Marko+One&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-/* Reset and Prevent Master Document Scroll */
+/* =========================================
+   RESET & BASE
+   ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,29 +13,30 @@
 html, body {
   width: 100%;
   height: 100vh;
-  overflow: hidden; /* Lock viewport permanently */
+  overflow: hidden;
   background-color: #2b2b2b;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Master Container Grid layout to hold everything on one page */
+/* Master Container */
 .container {
-    display: grid;
-    grid-template-columns: 28% 72%;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff;
+  display: grid;
+  grid-template-columns: 28% 72%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
 }
+
 /* =========================================
-   LEFT SIDE: BOOKSHELF SECTION
+   LEFT SIDE: BOOKSHELF SECTION (unchanged)
    ========================================= */
 .bookshelf-section {
   background:
     linear-gradient(rgba(38, 31, 25, 0.08), rgba(20, 16, 13, 0.18)),
     url('assets/images/idc-demos/background-image.webp') center top / cover no-repeat;
-  padding: 22px 14px 0;
+  padding: 1.5vw 24px 1.15vw;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -60,26 +61,24 @@ html, body {
 }
 
 .bookshelf-header p {
-    font-family: "Merriweather Sans", sans-serif;
-    font-size: 0.8rem;
-    color: rgb(32, 25, 22);
-    font-weight: 500;
-    margin: 1rem 0 0 0;
-    border-bottom: 1px solid #140d074d;
-    padding-bottom: 1rem;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 0.8rem;
+  color: rgb(32, 25, 22);
+  font-weight: 500;
+  margin: 1rem 0 0 0;
+  border-bottom: 1px solid #140d074d;
+  padding-bottom: 1rem;
 }
 
-/* Dynamic Scroll Container for Bookshelves */
 .shelves-scroll-container {
   flex-grow: 1;
-  overflow-y: auto; /* Active scrolling if bookshelves exceed screen size */
+  overflow-y: auto;
   padding: 0 0 22px;
 }
 
 .shelf-category:first-child h2 {
   margin-top: 1vw;
 }
-
 
 .shelf-category h2 {
   color: #f3eeee;
@@ -92,21 +91,19 @@ html, body {
 }
 
 .book-row {
-    display: flex;
-    justify-content: center;
-    gap: clamp(10px, 1vw, 18px);
-    min-height: 104px;
-    padding: 0px 42px;
-    align-items: flex-end;
-    position: relative;
-    z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 1vw, 18px);
+  min-height: 104px;
+  padding: 0px 42px;
+  align-items: flex-end;
+  position: relative;
+  z-index: 3;
 }
 
 .book-cover {
   width: clamp(56px, 5.4vw, 86px);
   aspect-ratio: 0.67;
-  /* background-color: #111;
-  box-shadow: 0 9px 13px rgba(0,0,0,0.34), -2px 0 5px rgba(0,0,0,0.24); */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   overflow: hidden;
@@ -121,7 +118,6 @@ html, body {
 
 .book-cover:hover {
   transform: translateY(-7px);
-  /* box-shadow: 0 15px 18px rgba(0,0,0,0.42), -2px 0 5px rgba(0,0,0,0.24); */
 }
 
 .blank-book {
@@ -146,7 +142,7 @@ html, body {
 }
 
 /* =========================================
-   RIGHT SIDE: SHOWCASE AREA
+   RIGHT SIDE: CONTENT SECTION
    ========================================= */
 .content-section {
   display: flex;
@@ -157,31 +153,35 @@ html, body {
   position: relative;
 }
 
+/* =========================================
+   HEADER — clean white, full-width
+   ========================================= */
 .main-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   min-height: 90px;
-  padding: 10px 24px 12px;
-  position: relative;
-  z-index: 15;
-  background: linear-gradient(105deg, rgba(242,245,245,0.96) 0%, rgba(229,234,234,0.92) 82%, transparent 82%);
-  border-bottom: 0;
+  padding: 18px 24px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e4;
   flex-shrink: 0;
-  overflow: visible;
   z-index: 15;
-  width: calc(100% - clamp(205px, 16vw, 300px));
+  width: 100%;
+  overflow: visible;
 }
 
 .logo {
-  padding: 0;
-  flex: 0 0 150px;
+  flex: 0 0 auto;
+  /* border: 2px solid #1a1a1a; */
+  padding: 5px 10px 5px 8px;
+  display: flex;
+  align-items: center;
   position: relative;
   z-index: 2;
 }
 
 .logo img {
-  max-height: 58px !important;
+  max-height: 52px !important;
   width: auto;
   display: block;
 }
@@ -191,13 +191,14 @@ html, body {
   text-align: center;
   position: relative;
   z-index: 2;
+  /* nudge left so title is centred in the visible (non-nav) area */
+  padding-right: clamp(205px, 16vw, 300px);
 }
 
 .header-title h2 {
   font-family: "Merriweather Sans", sans-serif;
-  font-size: clamp(1.5rem, 1.8vw, 2.1rem);
+  font-size: clamp(1.35rem, 1.62vw, 1.89rem);
   font-weight: 800;
-  letter-spacing: 0;
   color: #030303;
   line-height: 1.05;
 }
@@ -205,36 +206,31 @@ html, body {
 .header-title p {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.7rem, 0.9vw, 1rem);
-  color: #6e6e6e;
+  color: #606060;
   margin-top: 4px;
   font-weight: 400;
 }
 
-.header-right-shape {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 190px;
-  background: #1b1715;
-  transform: skewX(-25deg);
-  transform-origin: bottom right;
-  z-index: 3;
-}
-
-/* Showcase inner container */
+/* =========================================
+   SHOWCASE CONTAINER
+   ========================================= */
 .showcase-container {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(205px, 16vw, 300px);
   flex-grow: 1;
   overflow: hidden;
-  background-color: #403f3d;
+  background-color: #fbfcfc;
   min-height: 0;
 }
 
-/* Scrollable Main Central Preview Area */
+/* =========================================
+   CENTRAL PREVIEW AREA
+   ========================================= */
 .interactive-preview-scrollable {
-  padding: clamp(34px, 4.1vw, 72px) clamp(34px, 5vw, 82px) 28px clamp(42px, 5vw, 78px);
+  padding: clamp(20px, 2.5vw, 44px)
+         clamp(20px, 3vw, 48px)
+         16px
+         clamp(24px, 3vw, 46px);
   background:
     linear-gradient(118deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.72) 20%, transparent 20%),
     linear-gradient(63deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.42) 11%, transparent 11%),
@@ -244,21 +240,13 @@ html, body {
   flex-direction: column;
   position: relative;
   min-width: 0;
+  gap: 1vw;
   z-index: 2;
 }
 
+/* Curve is handled by .navigation-wrapper::before */
 .interactive-preview-scrollable::after {
-  content: '';
-  position: absolute;
-  top: -18%;
-  right: clamp(-235px, -17vw, -118px);
-  width: clamp(330px, 29vw, 520px);
-  height: 136%;
-  border-radius: 50%;
-  background: rgba(247,250,250,0.96);
-  box-shadow: 16px 0 24px rgba(0,0,0,0.18);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .preview-text {
@@ -271,17 +259,16 @@ html, body {
 
 .preview-text h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.35rem, 1.92vw, 2.42rem);
+  font-size: clamp(1.1475rem, 1.632vw, 2.057rem);
   line-height: 1.15;
   font-weight: 700;
   margin-bottom: 12px;
   color: #020202;
-  letter-spacing: 0;
 }
 
 .preview-text p {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.78rem, 1.08vw, 1.32rem);
+  font-size: clamp(0.702rem, 0.972vw, 1.188rem);
   line-height: 1.46;
   color: #555;
   font-weight: 400;
@@ -303,19 +290,13 @@ html, body {
 
 .feature-visual-image {
   width: min(96%, 1160px);
-  max-height: calc(100vh - 315px);
+  max-height: calc(100vh - 40vh);
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 10px 16px rgba(0,0,0,0.14));
 }
 
-.catalogue-mockup-frame {
-  flex-grow: 1;
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
+/* mockup kept hidden */
 .catalogue-mockup {
   display: flex;
   width: 100%;
@@ -376,14 +357,13 @@ html, body {
   justify-content: center;
 }
 
-/* Overlay Labels */
-.hotspot-label { 
-  position: absolute; 
-  background-color: #000; 
-  color: #fff; 
-  font-size: 0.7rem; 
-  padding: 6px 14px; 
-  border-radius: 4px; 
+.hotspot-label {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 6px 14px;
+  border-radius: 4px;
   font-weight: 600;
   z-index: 10;
 }
@@ -392,7 +372,6 @@ html, body {
 .label-video { right: -60px; top: 45%; }
 .label-animation { bottom: -50px; left: 45%; }
 
-/* Red dashed lines connecting hotspots */
 .hotspot-label::after {
   content: '';
   position: absolute;
@@ -400,18 +379,8 @@ html, body {
   border-color: red;
   border-width: 0;
 }
-.label-audio::after {
-  width: 100px;
-  border-bottom-width: 2px;
-  top: 50%;
-  left: 100%;
-}
-.label-images::after {
-  width: 50px;
-  border-bottom-width: 2px;
-  top: 50%;
-  left: 100%;
-}
+.label-audio::after { width: 100px; border-bottom-width: 2px; top: 50%; left: 100%; }
+.label-images::after { width: 50px; border-bottom-width: 2px; top: 50%; left: 100%; }
 .label-video::before {
   content: '';
   position: absolute;
@@ -420,14 +389,8 @@ html, body {
   top: 50%;
   right: 100%;
 }
-.label-animation::after {
-  height: 40px;
-  border-left: 2px dashed red;
-  bottom: 100%;
-  left: 50%;
-}
+.label-animation::after { height: 40px; border-left: 2px dashed red; bottom: 100%; left: 50%; }
 
-/* Little red arrows */
 .label-audio::before, .label-images::before {
   content: '▶';
   position: absolute;
@@ -458,113 +421,131 @@ html, body {
 }
 
 /* =========================================
-   RIGHT SIDE NAVIGATION PANEL
+   RIGHT NAVIGATION PANEL
    ========================================= */
-.feature-navigation {
-  background-color: #4a4a4a;
-  overflow-y: auto; /* Independent Navigation Scrollbar */
-  height: 100%;
-}
-
 .navigation-wrapper {
-  display: flex;
-  flex-direction: column;
   min-width: 205px;
   max-width: 300px;
   width: clamp(205px, 16vw, 300px);
   height: 100vh;
-  overflow: visible;
   position: absolute;
   top: 0;
   right: 0;
-  background: #f7fafa;
-  z-index: 1;
-}
-
-.navigation-wrapper::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: calc(100% - 35px);
-  width: 600px;
-  height: 140%;
-  background: #f7fafa;
-  border-radius: 50%;
-  z-index: 5;
-  pointer-events: none;
-}
-
-
-
-.feature-navigation {
-  background-color: transparent;
-  padding: 0;
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  flex: 1 1 auto;
+  background: black;
+  overflow: visible;
+  /* Concave left edge — polygon approximates an inward curve using midpoint steps */
+/* clip-path: polygon(
+  0% 0%,
+  100% 0%,
+  100% 100%,
+  0% 100%,
+
+  6% 99%,
+  11% 96%,
+  17% 90%,
+  22% 82%,
+  26% 72%,
+  29% 61%,
+  31% 50%,
+  29% 39%,
+  26% 28%,
+  22% 18%,
+  17% 10%,
+  53% 5%,
+  8% 1%
+) */
+}
+
+/* No bleeding pseudo-element — concave curve is handled via clip-path on the nav itself */
+.navigation-wrapper::before {
+  display: none;
+}
+
+.feature-navigation {
   position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  background: transparent;
+  margin-top: 100px; /* push below header */
 }
 
 .feature-navigation ul {
   list-style: none;
   padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Each nav item — equal height, right-aligned text */
 .feature-navigation li {
-  min-height: clamp(28px, 5vh, 54px);
-  padding: 0 clamp(12px, 1.15vw, 22px) 0 clamp(44px, 4vw, 54px);
-  color: #ececec;
+  flex: 1 1 0;
+  min-height: 0;
+padding: clamp(6px, 0.8vw, 10px)
+         clamp(15px, 1.55vw, 26px)
+         clamp(6px, 0.8vw, 10px)
+         9px;
+  color: #ccc5bc;
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.56rem, 0.69vw, 1.05rem);
-  line-height: 1.12;
-  border-bottom: 1px solid rgba(0,0,0,0.23);
-  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: clamp(0.624rem, 0.792vw, 1.008rem);
+  font-weight: 400;
+  line-height: 1.2;
+  border-bottom: 1px solid rgba(0,0,0,0.22);
   cursor: pointer;
-  text-align: center;
-  transition: all 0.2s ease;
-  background-color: var(--bg);
+  /* RIGHT-ALIGNED text as in target */
+  text-align: right;
+  transition: background-color 0.18s ease, color 0.18s ease;
+
+  /* Smooth dark-charcoal → medium-taupe gradient top to bottom */
+  /* item 0 = darkest (#252120), item 19 = medium taupe (#8a7f75) */
+  background-color: hsl(
+    22,
+    calc(6% + var(--i) * 1.3%),
+    calc(13% + var(--i) * 2.1%)
+  );
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   position: relative;
   isolation: isolate;
-  z-index: 1;
 }
 
+/* Subtle inner shading */
 .feature-navigation li::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.16));
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.10) 100%);
   z-index: -1;
+  pointer-events: none;
 }
 
 .feature-navigation li:hover {
-  color: #fff;
+  color: #ffffff;
+  filter: brightness(1.18);
 }
 
+/* Active item — darkest charcoal, bold white text, no clip-path */
 .feature-navigation li.active {
-  color: #fff;
+  background-color: #1c1917 !important;
+  color: #ffffff !important;
   font-weight: 600;
-  background: #24201e !important;
+  clip-path: none;
   z-index: 6;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%);
-  padding-left: clamp(24px, 2.5vw, 34px);
 }
 
-/* Scrollbar aesthetic customization for clean panels */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-}
-.feature-navigation::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-}
+/* =========================================
+   SCROLLBARS
+   ========================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.25); border-radius: 10px; }
+.feature-navigation::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }

@@ -220,3 +220,198 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("beforeunload", stopAutoRotate);
+
+
+
+
+// ─── Constants ───────────────────────────
+
+const PRELOADER_SESSION_KEY = "fisto-idc-preloader-done";
+const PRELOADER_MIN_MS = 3200;   // minimum display time (ms)
+const PRELOADER_EXIT_MS = 500;   // fade-out duration (ms)
+
+// ─── Asset discovery ─────────────────────
+function collectPreloadAssets() {
+  const cssAssets = Array.isArray(window.CSS_BACKGROUND_ASSETS) ? window.CSS_BACKGROUND_ASSETS : [];
+  const urls = new Set(cssAssets);
+
+  document.querySelectorAll("img[src]").forEach((img) => {
+    if (img.src) urls.add(img.getAttribute("src") || img.src);
+  });
+
+  Object.values(featureData).forEach((feature) => {
+    if (feature.image) urls.add(feature.image);
+  });
+
+  return [...urls].filter(Boolean);
+}
+
+// ─── Image preloader ─────────────────────
+function preloadImage(url) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = "async";
+
+    const finish = () => resolve({ url, ok: true });
+    const fail = () => resolve({ url, ok: false });
+
+    image.addEventListener("load", finish, { once: true });
+    image.addEventListener("error", fail, { once: true });
+    image.src = url;
+
+    if (image.complete && image.naturalWidth > 0) finish();
+  });
+}
+
+// ─── Wait for external stylesheets ──────
+function waitForStylesheets() {
+  const links = [...document.querySelectorAll('link[rel="stylesheet"]')];
+  return Promise.all(
+    links.map(
+      (link) =>
+        new Promise((resolve) => {
+          if (link.sheet) { resolve(); return; }
+          link.addEventListener("load", () => resolve(), { once: true });
+          link.addEventListener("error", () => resolve(), { once: true });
+        })
+    )
+  );
+}
+
+// ─── Font loading ────────────────────────
+function waitForFonts() {
+  if (!document.fonts?.ready) return Promise.resolve();
+  return document.fonts.ready.catch(() => undefined);
+}
+
+// ─── Session helpers ─────────────────────
+function hasSeenPreloaderThisSession() {
+  try {
+    return sessionStorage.getItem(PRELOADER_SESSION_KEY) === "1";
+  } catch { return false; }
+}
+
+function markPreloaderSeen() {
+  try { sessionStorage.setItem(PRELOADER_SESSION_KEY, "1"); }
+  catch { /* ignore */ }
+}
+
+// ─── UI updater ─────────────────────────
+function updatePreloaderUI(percent, valueEl, srEl, fillEl) {
+  const clamped = Math.max(0, Math.min(100, Math.round(percent)));
+  const padded = String(clamped).padStart(2, "0");
+
+  if (valueEl) valueEl.textContent = padded + "%";
+  if (srEl) srEl.textContent = `${clamped}% loaded`;
+  if (fillEl) fillEl.style.width = `${clamped}%`;
+}
+
+// ─── Wait until all conditions met ──────
+function waitForPreloaderComplete(getState) {
+  return new Promise((resolve) => {
+    let displayPercent = 0;
+
+    const tick = () => {
+      const { loaded, total, allAssetsDone, startedAt } = getState();
+      const elapsed = performance.now() - startedAt;
+      const assetPercent = total ? (loaded / total) * 100 : 100;
+      const timePercent = Math.min(100, (elapsed / PRELOADER_MIN_MS) * 100);
+
+      let goal;
+      if (!allAssetsDone) {
+        goal = Math.min(assetPercent, 97);
+      } else {
+        goal = Math.min(100, Math.max(assetPercent, timePercent));
+      }
+
+      displayPercent += (goal - displayPercent) * 0.07;
+      updatePreloaderUI(displayPercent, getState().valueEl, getState().srEl, getState().fillEl);
+
+      const ready =
+        allAssetsDone &&
+        displayPercent >= 99.5 &&
+        elapsed >= PRELOADER_MIN_MS &&
+        loaded >= total;
+
+      if (ready) {
+        updatePreloaderUI(100, getState().valueEl, getState().srEl, getState().fillEl);
+        resolve();
+        return;
+      }
+
+      requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  });
+}
+
+// ─── Main preloader runner ──────────────
+async function runPreloader() {
+  if (hasSeenPreloaderThisSession()) {
+    document.body.classList.remove("is-loading");
+    return;
+  }
+
+  const preloader = document.getElementById("fisto-preloader");
+  const progressFill = preloader?.querySelector(".preloader-bar-fill");
+  const percentValue = preloader?.querySelector(".preloader-percent");
+  const percentSr = preloader?.querySelector(".preloader-sr");
+  const startedAt = performance.now();
+
+  if (!preloader) {
+    document.body.classList.remove("is-loading");
+    return;
+  }
+
+  await waitForStylesheets();
+
+  const assets = collectPreloadAssets();
+  const totalSteps = assets.length + 2;
+  let loaded = 1;
+  let allAssetsDone = false;
+
+  const state = () => ({
+    loaded,
+    total: totalSteps,
+    allAssetsDone,
+    startedAt,
+    valueEl: percentValue,
+    srEl: percentSr,
+    fillEl: progressFill
+  });
+
+  const onAssetSettled = () => { loaded += 1; };
+
+  const imageLoads = assets.map((url) => preloadImage(url).then(onAssetSettled));
+  const fontLoad = waitForFonts().then(() => { loaded += 1; });
+
+  Promise.all([...imageLoads, fontLoad]).then(() => {
+    loaded = totalSteps;
+    allAssetsDone = true;
+  });
+
+  await waitForPreloaderComplete(state);
+
+  markPreloaderSeen();
+
+  await new Promise((resolve) => setTimeout(resolve, 280));
+
+  preloader.classList.add("is-exiting");
+  document.body.classList.remove("is-loading");
+
+  await new Promise((resolve) => setTimeout(resolve, PRELOADER_EXIT_MS));
+  preloader.remove();
+}
+
+// ─── Kick off ────────────────────────────
+window.addEventListener("DOMContentLoaded", () => {
+  runPreloader().then(() => {
+    if (typeof window.initApp === "function") {
+      try { window.initApp(); } catch (err) { console.error('initApp() error:', err); }
+    } else {
+      // initApp is optional; log for debugging
+      console.debug('initApp is not defined; skipping app init.');
+    }
+  });
+});

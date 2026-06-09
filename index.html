@@ -4,10 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fisto Tech IDC Webpage</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
   <link rel="icon" href="./assets/images/fisto-logo.png" type="image/png">
+  <style>
+    #fisto-preloader { position: fixed; inset: 0; z-index: 99999; background: #fff; }
+    body.is-loading { overflow: hidden; }
+    body.is-loading .container { opacity: 0; visibility: hidden; }
+  </style>
 </head>
 <body>
+
+  <div id="fisto-preloader" class="fisto-preloader" role="status" aria-live="polite" aria-label="Loading">
+    <div class="preloader-inner">
+      <img
+        class="preloader-logo"
+        src="assets/images/fisto-logo.png"
+        alt="FIST-O Tech"
+        width="280"
+        height="120"
+      />
+      <div class="preloader-bar-track" aria-hidden="true">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <span class="preloader-percent" aria-hidden="true">00%</span>
+    </div>
+    <span class="preloader-sr">0% loaded</span>
+  </div>
+   <script>
+    try {
+      if (sessionStorage.getItem("fisto-idc-preloader-done") === "1") {
+        document.body.classList.remove("is-loading");
+        document.getElementById("fisto-preloader")?.remove();
+      }
+    } catch (e) {}
+  </script>
 
   <div class="container">
     
@@ -157,6 +187,7 @@
 
   </div>
 
-  <script src="script.js?v=2"></script>
+  
+  <script src="script.js?v=3"></script>
 </body>
 </html>

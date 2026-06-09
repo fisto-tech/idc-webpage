@@ -54,7 +54,8 @@ body {
 .bookshelf-header h1 {
   font-family: "Merriweather Sans", sans-serif;
   font-size: clamp(1.7rem, 2vw, 2rem);
-  color: #201916;
+  /* color: #201916; */
+  color: #5d0404;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 5px;
@@ -92,14 +93,16 @@ body {
 }
 
 .book-row {
-  display: flex;
-  justify-content: center;
-  gap: clamp(10px, 1vw, 18px);
-  min-height: 104px;
-  padding: 0px 42px;
-  align-items: flex-end;
-  position: relative;
-  z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: clamp(4.5px, 0.34vw, 7.8px);
+    min-height: 104px;
+    padding: 0px 42px;
+    align-items: flex-end;
+    position: relative;
+    z-index: 3;
+    margin-bottom: -0.98vw;
+    
 }
 
 .book-cover {
@@ -113,7 +116,7 @@ body {
 .book-cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -135,7 +138,7 @@ body {
 }
 
 .shelf-category-compact .book-row {
-  gap: clamp(36px, 4.5vw, 72px);
+  gap: clamp(8.5px, 0.75vw, 10px);
 }
 
 .shelf-category-last {
@@ -208,7 +211,7 @@ body {
   font-family: "Merriweather Sans", sans-serif;
   font-size: clamp(1.35rem, 1.62vw, 1.89rem);
   font-weight: 800;
-  color: #030303;
+  color: #004883;
   line-height: 1.05;
 }
 
@@ -236,7 +239,8 @@ body {
    CENTRAL PREVIEW AREA
    ========================================= */
 .interactive-preview-scrollable {
-  padding: clamp(20px, 2.5vw, 44px) clamp(20px, 3vw, 48px) 16px clamp(24px, 3vw, 46px);
+  /* padding: clamp(20px, 2.5vw, 44px) clamp(20px, 3vw, 48px) 16px clamp(24px, 3vw, 46px); */
+  padding: 0;
   background:
     linear-gradient(118deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.72) 20%, transparent 20%),
     linear-gradient(63deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.42) 11%, transparent 11%),
@@ -259,6 +263,7 @@ body {
   flex-shrink: 0;
   margin-bottom: clamp(14px, 2.7vh, 34px);
   max-width: min(850px, 76%);
+  padding: clamp(20px, 2.5vw, 44px) clamp(20px, 3vw, 48px) 16px clamp(24px, 3vw, 46px);
   position: relative;
   z-index: 2;
 }
@@ -269,7 +274,7 @@ body {
   line-height: 1.15;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #020202;
+  color: #966011;
 }
 
 .preview-text p {
@@ -285,21 +290,23 @@ body {
 }
 
 .feature-image-frame {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 0;
-  position: relative;
-  z-index: 2;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 0;
+    position: relative;
+    z-index: 2;
+    padding: 10px 22px 18px;
 }
 
 .feature-visual-image {
-  width: min(96%, 1160px);
-  max-height: calc(100vh - 40vh);
+  width: min(100%, 1180px);
+  max-height: calc(100vh - 45vh);
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.14));
+  border-radius: 18px;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.16));
 }
 
 /* mockup kept hidden */
@@ -474,7 +481,10 @@ body {
    RIGHT NAVIGATION PANEL
    ========================================= */
 .navigation-wrapper {
-  width: clamp(260px, 20vw, 310px);
+  /* Wider on large screens to avoid excessive wrapping / cramped look */
+  /* width: clamp(270px, 17vw, 340px); */
+  width: clamp(300px, 20vw, 380px);
+  /* width: 20vw; */
   height: 100vh;
   position: absolute;
   top: 0;
@@ -482,11 +492,30 @@ body {
   z-index: 999;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #0a1628 0%, #111d33 50%, #0d1a2e 100%);
-  border-radius: 24px 0 0 24px;
-  box-shadow: -6px 0 30px rgba(0, 0, 0, 0.3);
-  padding: 12px 6px 12px 10px;
-  overflow: hidden;
+  background: linear-gradient(180deg, #1d2b38 0%, #192735 36%, #162433 100%);
+  border-radius: 18px 0 0 18px;
+  box-shadow:
+    -8px 10px 24px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  /* padding: 14px 10px 12px 12px; */
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.navigation-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0.06) 18px, transparent 42px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .feature-navigation {
@@ -498,11 +527,13 @@ body {
   overflow-y: auto;
   background: transparent;
   margin-top: 0;
+  padding-right: 6px;
+  z-index: 2;
 }
 
 .feature-navigation ul {
   list-style: none;
-  padding: 0;
+  padding: 10px 12px 12px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -514,19 +545,49 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 12px;
   min-height: 0;
-  padding: clamp(10px, 1.2vh, 14px) 14px clamp(10px, 1.2vh, 14px) 12px;
-  color: rgba(220, 225, 235, 0.85);
+  padding: 10px 12px;
+  color: rgba(246, 249, 252, 0.92);
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.72rem, 0.82vw, 0.88rem);
-  font-weight: 400;
+  /* font-size: clamp(0.82rem, 0.92vw, 0.98rem); */
+  font-size: clamp(0.738rem, 0.828vw, 0.882rem);
+  font-weight: 500;
   cursor: pointer;
   background: transparent;
-  transition: all 0.3s ease;
-  border-radius: 14px;
+  overflow: hidden;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.38s cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 0.38s ease;
+  border-radius: 12px;
   border: 1px solid transparent;
-  line-height: 1.3;
+  line-height: 1.25;
+  min-height: 42px;
+}
+
+/* Hover overlay animation layer */
+.feature-navigation li::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.12)
+  );
+  transform: translateX(-110%);
+  transition: transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keep actual content above overlay */
+.feature-navigation li > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Subtle divider between items */
@@ -534,10 +595,10 @@ body {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 48px;
+  left: 54px;
   right: 14px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .feature-navigation li:last-child::after,
@@ -552,10 +613,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
-  color: rgba(180, 190, 210, 0.7);
-  transition: all 0.3s ease;
+  color: rgba(235, 242, 250, 0.86);
+  background: rgba(10, 16, 24, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.38s cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .nav-icon svg {
@@ -566,10 +635,13 @@ body {
 /* Text label */
 .nav-text {
   flex: 1;
+  min-width: 0;
   text-align: left;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
+  letter-spacing: 0;
 }
 
 /* Right arrow (hidden by default, shown on active) */
@@ -581,37 +653,72 @@ body {
   transform: translateX(-5px);
   transition: all 0.3s ease;
   flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.96);
 }
 
 /* Hover state */
 .feature-navigation li:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
+  transform: translateX(-6px);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.feature-navigation li:hover::before {
+  transform: translateX(0);
 }
 
 .feature-navigation li:hover .nav-icon {
-  color: rgba(220, 225, 240, 0.95);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(10, 16, 24, 0.28);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.feature-navigation li:hover .nav-arrow {
+  opacity: 0.65;
+  transform: translateX(0);
 }
 
 /* Active item — gold metallic gradient */
 .feature-navigation li.active {
-  background: linear-gradient(135deg, #c9a84c 0%, #b08d3a 40%, #917430 100%) !important;
-  border: 1px solid rgba(218, 190, 130, 0.45);
+  background:
+    linear-gradient(180deg, #cfb078 0%, #bc9456 48%, #9e7641 100%) !important;
+  border: 1px solid rgba(243, 231, 206, 0.38);
   color: #ffffff !important;
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   z-index: 10;
-  margin: 2px 0;
+  margin: 4px 0 6px;
   border-radius: 14px;
 }
 
+.feature-navigation li.active::before {
+  display: none;
+}
+
 .feature-navigation li.active .nav-icon {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.feature-navigation li.active .nav-text {
   color: #ffffff;
 }
 
 .feature-navigation li.active .nav-arrow {
   opacity: 1;
   transform: translateX(0);
+}
+
+.feature-navigation li.active .nav-arrow svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* =========================================
@@ -631,7 +738,7 @@ body {
 }
 
 .feature-navigation::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* =========================================

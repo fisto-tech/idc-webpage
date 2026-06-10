@@ -116,7 +116,7 @@ if (product360Item) product360Item.textContent = "360\u00b0 Product Visualizatio
 
 let currentIndex = Math.max(featureKeys.indexOf("media"), 0);
 let rotateTimer = null;
-const ROTATE_MS = 5000;
+const ROTATE_MS = 1000000;
 
 function setActiveFeature(featureKey) {
   const feature = featureData[featureKey];

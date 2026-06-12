@@ -12,9 +12,15 @@ const featureData = {
     image: `${imageBase}/gifs-and-dynamic-animations.webp`
   },
   buttons: {
-    title: "Interactive Buttons and Hotspots",
+    title: "Interactive Buttons & Hotspots",
     description: "Turn static pages into interactive experiences with clickable buttons, hotspots, and action-driven content.",
-    image: `${imageBase}/interactive-buttons-and-hotspots.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper">
+        <img class="custom-feature-img interactive-buttons-hotspots" src="assets/images/content-images/interactive-buttons-hotspot/flipbook-image.webp" alt="Interactive Buttons and Hotspots">
+        <div id="interactive-hotspot-svg-container" class="svg-overlay-container"></div>
+        <div id="interactive-button-svg-container" class="svg-overlay-container""></div>
+      </div>
+    `
   },
   linking: {
     title: "Internal & External Linking",
@@ -67,9 +73,27 @@ const featureData = {
     image: `${imageBase}/custom-domain.webp`
   },
   flip: {
-    title: "Realistic Page Flip Experience",
+    title: "Page Flip Effects & Viewing Experience",
     description: "Access powerful viewing tools including zoom controls, full screen mode, page navigation, quick page access, sharing options, downloads, and background audio controls for a smooth and interactive reading experience.",
-    image: `${imageBase}/page-flip-effects.webp`
+    htmlContent: `
+      <div class="flip-feature-wrapper">
+        <img class="flip-cross-line" src="assets/images/content-images/page-flip-effects/cross-line.svg" alt="Divider">
+        <div class="flip-effects-grid">
+          <div class="flip-effects-item">
+            <img src="assets/images/content-images/page-flip-effects/soft-flip.webp" alt="Soft Page Flip">
+          </div>
+          <div class="flip-effects-item">
+            <img src="assets/images/content-images/page-flip-effects/hard-cover-flip.webp" alt="Hard Cover Flip">
+          </div>
+          <div class="flip-effects-item">
+            <img src="assets/images/content-images/page-flip-effects/auto-page-flip.webp" alt="Auto Page Flip">
+          </div>
+          <div class="flip-effects-item">
+            <img src="assets/images/content-images/page-flip-effects/drag-to-flip.webp" alt="Drag-to-Flip">
+          </div>
+        </div>
+      </div>
+    `
   },
   "360-view": {
     title: "360\u00b0 Product Visualization",
@@ -97,9 +121,84 @@ const featureData = {
     image: `${imageBase}/analytics-and-customer-insights.webp`
   },
   fingertips: {
-    title: "Analytics & Customer Insights",
+    title: "Everything at Your Fingertips",
     description: "Access powerful viewing tools including zoom controls, full screen mode, page navigation, quick page access, sharing options, downloads, and background audio controls for a smooth and interactive reading experience.",
     image: `${imageBase}/everything-at-your-fingertips.webp`
+  },
+  'multi-view': {
+    title: "Multi-View Product Experience",
+    description: "Interactive explode views and detailed function demonstrations.",
+    image: `${imageBase}/interactive-media-experience.webp`
+  },
+  'product-selection': {
+    title: "Product Selection & Interaction",
+    description: "Seamless product selection, customization, and interaction.",
+    image: `${imageBase}/interactive-media-experience.webp`
+  },
+  'social-sharing': {
+    title: "One-Tap Social Sharing",
+    description: "Easily share content across social media platforms with a single tap.",
+    image: `${imageBase}/interactive-media-experience.webp`
+  },
+  background: {
+    title: "Background Customization",
+    description: "Personalize your catalog with custom colors, themes, images, and video backgrounds.",
+    image: `${imageBase}/interactive-media-experience.webp`
+  },
+  'website-embed': {
+    title: "Website Embed Integration",
+    description: "Seamlessly integrate your digital catalog directly into your website.",
+    image: `${imageBase}/interactive-media-experience.webp`
+  },
+  embed: {
+    title: "Map Embed & Location Integration",
+    description: "Provide interactive maps and location details right within your digital catalogue.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper">
+        <img class="custom-feature-img" src="assets/images/content-images/embedded-content-integration/flipbook-image.webp" alt="Embedded Content">
+        <img id="embed-video-player" class="embed-content-anim-1" src="assets/images/content-images/embedded-content-integration/video-image.webp" alt="Video Player">
+        <img id="embed-map-box" class="embed-map-static" src="assets/images/content-images/embedded-content-integration/map-image.webp" alt="Map Box">
+        
+        <img id="embed-fisto-text" class="embed-content-anim-2" src="assets/images/content-images/embedded-content-integration/fisto-tech-text.svg" alt="Fisto Tech Text">
+        <img id="embed-location-icon" class="embed-content-anim-2" src="assets/images/content-images/embedded-content-integration/location-icon.svg" alt="Location Pin">
+        
+        <div id="embed-video-svg-container"></div>
+        <div id="embed-map-svg-container"></div>
+      </div>
+    `
+  },
+  ar: {
+    title: "AR Experience with QR Code",
+    description: "Bring products into the real world with immersive AR experiences accessible through mobile devices.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper">
+        <img class="custom-feature-img" src="assets/images/content-images/ar-experience/background-lap-image.webp" alt="AR Experience Laptop">
+        <img id="ar-hand-overlay" class="ar-hand-anim" src="assets/images/content-images/ar-experience/hand-ar-image.webp" alt="Hand holding phone">
+      </div>
+    `
+  },
+  '360-view': {
+    title: "360° Product Visualization",
+    description: "Provide an immersive 3D experience allowing customers to view products from every angle.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper fisto-360-wrapper">
+        <img class="custom-feature-img" src="assets/images/content-images/360-image/image-template.webp" alt="360 View Template">
+        
+        <div id="model-360-container">
+          <model-viewer 
+            src="assets/images/content-images/360-image/360-model.glb" 
+            auto-rotate 
+            rotation-per-second="30deg"
+            camera-controls 
+            shadow-intensity="1" 
+            style="width: 100%; height: 100%; background-color: transparent;"
+            interaction-prompt="none"
+          ></model-viewer>
+        </div>
+        
+        <div id="model-360-svg-container"></div>
+      </div>
+    `
   }
 };
 
@@ -114,30 +213,128 @@ const featureKeys = Array.from(featureMenu?.querySelectorAll("li[data-feature]")
 const product360Item = featureMenu?.querySelector('li[data-feature="360-view"]');
 if (product360Item) product360Item.textContent = "360\u00b0 Product Visualization";
 
-let currentIndex = Math.max(featureKeys.indexOf("media"), 0);
+let currentIndex = 0;
 let rotateTimer = null;
-const ROTATE_MS = 1000000;
+const ROTATE_MS = 10000;
 
 function setActiveFeature(featureKey) {
   const feature = featureData[featureKey];
   if (!feature) return;
 
+  const isComingSoon = typeof comingSoonFeatures !== 'undefined' && comingSoonFeatures.includes(featureKey);
+  const overlay = document.getElementById('coming-soon-overlay');
+  if (overlay) {
+    overlay.style.display = isComingSoon ? 'flex' : 'none';
+  }
+
+  const customHtmlContainer = document.getElementById('feature-custom-html');
   const previewText = document.querySelector('.preview-text');
-  
+
   if (previewText) {
     previewText.classList.remove('fade-in');
     visualImage.classList.remove('slide-in');
+    if (customHtmlContainer) customHtmlContainer.classList.remove('slide-in');
     void previewText.offsetWidth; // Trigger reflow
   }
 
   titleElement.textContent = feature.title;
   descriptionElement.textContent = feature.description;
-  visualImage.src = feature.image;
-  visualImage.alt = `${feature.title} preview`;
+
+  if (customHtmlContainer) {
+    if (feature.htmlContent) {
+      visualImage.style.display = 'none';
+      customHtmlContainer.innerHTML = feature.htmlContent;
+      customHtmlContainer.style.display = 'flex';
+
+      if (featureKey === 'buttons') {
+        setTimeout(() => {
+          fetch('assets/images/content-images/interactive-buttons-hotspot/hotspot-button.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('<defs>', `<defs><mask id="hotspot-mask"><path d="M 211 195 L 211 22 L 121 22" fill="none" stroke="white" stroke-width="30" stroke-dasharray="300" stroke-dashoffset="300" class="fisto-anim-draw-1" /></mask>`);
+              svg = svg.replace('<g filter="url(#filter0', '<g mask="url(#hotspot-mask)" filter="url(#filter0');
+              svg = svg.replace('<g filter="url(#filter1', '<g class="fisto-popup-btn-1" style="transform-origin: 50px 22px;" filter="url(#filter1');
+              const container = document.getElementById('interactive-hotspot-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+
+          fetch('assets/images/content-images/interactive-buttons-hotspot/interactive-button.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('<defs>', `<defs><mask id="interactive-mask"><path d="M 100 0 L 100 61" fill="none" stroke="white" stroke-width="30" stroke-dasharray="100" stroke-dashoffset="100" class="fisto-anim-draw-2" /></mask>`);
+              svg = svg.replace('<g filter="url(#filter0', '<g mask="url(#interactive-mask)" filter="url(#filter0');
+              svg = svg.replace('<g filter="url(#filter1', '<g class="fisto-popup-btn-2" style="transform-origin: 90px 96px;" filter="url(#filter1');
+              const container = document.getElementById('interactive-button-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+
+      if (featureKey === 'embed') {
+        setTimeout(() => {
+          fetch('assets/images/content-images/embedded-content-integration/video-embed.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('width="215" height="297"', 'style="width: 100%; height: auto;"');
+              svg = svg.replace('<svg ', '<svg style="width: 100%; height: 100%;" '); // keeping this just in case, but the above line fixes it better
+              svg = svg.replace('<g filter="url(#filter0', '<g class="fisto-popup-btn-1" style="transform-origin: center bottom;" filter="url(#filter0');
+              svg = svg.replace('<g filter="url(#filter1', '<g class="fisto-clip-reveal-up-right" filter="url(#filter1');
+              const container = document.getElementById('embed-video-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+            
+          fetch('assets/images/content-images/embedded-content-integration/google-map-embed.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('width="264" height="305"', 'style="width: 100%; height: auto;"');
+              svg = svg.replace('<svg ', '<svg style="width: 100%; height: 100%;" ');
+              svg = svg.replace('<g filter="url(#filter0', '<g class="fisto-popup-btn-2" style="transform-origin: center bottom;" filter="url(#filter0');
+              svg = svg.replace('<g filter="url(#filter1', '<g class="fisto-clip-reveal-up-left" filter="url(#filter1');
+              const container = document.getElementById('embed-map-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+
+      if (featureKey === '360-view') {
+        setTimeout(() => {
+          fetch('assets/images/content-images/360-image/click-and-arrow-text.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('<svg ', '<svg style="width: 100%; height: auto;" ');
+              
+              // The red arrow path starts with M2.10433
+              svg = svg.replace('<path d="M2.10433', '<path class="fisto-clip-reveal-up-left" d="M2.10433');
+              
+              // The black text starts with M323.124. We wrap it and everything after it in a popup group
+              svg = svg.replace('<path d="M323.124', '<g class="fisto-popup-btn-1" style="transform-origin: right bottom;"><path d="M323.124');
+              svg = svg.replace('</svg>', '</g></svg>');
+              
+              const container = document.getElementById('model-360-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+    } else {
+      customHtmlContainer.style.display = 'none';
+      customHtmlContainer.innerHTML = '';
+      visualImage.style.display = 'block';
+
+      visualImage.src = feature.image;
+      visualImage.alt = `${feature.title} preview`;
+
+      if (isComingSoon) {
+        visualImage.style.filter = "blur(6px) brightness(0.5)";
+      } else {
+        visualImage.style.filter = "none";
+      }
+    }
+  }
 
   if (previewText) {
     previewText.classList.add('fade-in');
     visualImage.classList.add('slide-in');
+    if (customHtmlContainer) customHtmlContainer.classList.add('slide-in');
   }
 
   featureMenu.querySelectorAll("li").forEach((item) => item.classList.remove("active"));
@@ -154,8 +351,11 @@ function advanceFeature() {
   setActiveFeature(featureKeys[currentIndex]);
 }
 
+const autoplayToggle = document.getElementById('autoplay-toggle');
+
 function startAutoRotate() {
   stopAutoRotate();
+  if (autoplayToggle && !autoplayToggle.checked) return;
   rotateTimer = setInterval(advanceFeature, ROTATE_MS);
 }
 
@@ -185,13 +385,21 @@ const iconSVGs = {
   slideshow: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z"/><polyline points="7 21 12 17 17 21"/></svg>`,
   mobile: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
   analytics: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>`,
-  fingertips: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/><rect x="10" y="9" width="12" height="11" rx="2"/><path d="M14 14h4"/></svg>`
+  fingertips: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/><rect x="10" y="9" width="12" height="11" rx="2"/><path d="M14 14h4"/></svg>`,
+  'multi-view': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  'product-selection': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  'social-sharing': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+  background: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>`,
+  'website-embed': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="16 10 20 10 20 14"/><polyline points="4 14 4 10 8 10"/></svg>`
 };
+
+const comingSoonFeatures = ['multi-view', 'product-selection', 'social-sharing', 'background', 'website-embed'];
 
 document.querySelectorAll('#feature-menu li[data-feature]').forEach(li => {
   const feature = li.dataset.feature;
   const text = li.textContent.trim();
   const svg = iconSVGs[feature] || iconSVGs['media'];
+
   li.innerHTML = `
     <div class="nav-icon">${svg}</div>
     <div class="nav-text">${text}</div>
@@ -217,6 +425,16 @@ featureMenu?.addEventListener("click", (event) => {
 window.addEventListener("DOMContentLoaded", () => {
   setActiveFeature(featureKeys[currentIndex] || featureKeys[0]);
   startAutoRotate();
+
+  if (autoplayToggle) {
+    autoplayToggle.addEventListener('change', () => {
+      if (autoplayToggle.checked) {
+        startAutoRotate();
+      } else {
+        stopAutoRotate();
+      }
+    });
+  }
 });
 
 window.addEventListener("beforeunload", stopAutoRotate);

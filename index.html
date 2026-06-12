@@ -44,7 +44,7 @@
     <aside class="bookshelf-section">
       <div class="bookshelf-header">
         <h1>Our Digital Catalogue Demos</h1>
-        <p>Explore our Interactive Digital Catalogues by category.</p>
+        <!-- <p>Explore our Interactive Digital Catalogues by category.</p> -->
       </div>
 
       <div class="shelves-scroll-container">
@@ -54,6 +54,12 @@
             <a href="https://terratechpacks.com/DigitalCatalogue/" target="_blank" class="book-cover"><img src="assets/images/idc-demos/food-container-idc/1-terratech-idc.webp" alt="Terratech IDC book"></a>
             <a href="https://www.4mpacks.com/DigitalCatalogue/" target="_blank" class="book-cover"><img src="assets/images/idc-demos/food-container-idc/2-4mpacks-idc.webp" alt="4M Packs IDC book"></a>
             <a href="https://www.rkpoly.com/DigitalCatalogue/" target="_blank" class="book-cover"><img src="assets/images/idc-demos/food-container-idc/3-rkpoly-idc.webp" alt="RK Poly IDC book"></a>
+          </div>
+          <div class="wood-shelf" aria-hidden="true"></div>
+        </div>
+
+        <div class="shelf-category">
+          <div class="book-row">
             <a href="https://imlcatalogue.adecoenergy.in/" target="_blank" class="book-cover"><img src="assets/images/idc-demos/food-container-idc/4-ecoenergy-idc.webp" alt="Eco Energy IDC book"></a>
              <a href="https://www.smartpolypackaging.co.in/DigitalCatalogue/" target="_blank" class="book-cover"><img src="assets/images/idc-demos/poly-bag-idc/11-smartpoly-idc.webp" alt="Smart Poly IDC book"></a>
           </div>
@@ -117,7 +123,7 @@
           <img src="assets/images/fisto-logo.png" alt="FIST-O Logo" style="max-height: 60px;">
         </a>
         <div class="header-title">
-          <h2>FEATURES IN IDC</h2>
+          <h2>Features in Interactive Digital catalogue (IDC)</h2>
           <p>Explore our Interactive Digital Catalogues by category.</p>
         </div>
         
@@ -153,32 +159,42 @@
           </div>
           <div class="feature-image-frame">
             <img id="feature-visual-image" class="feature-visual-image" src="assets/images/content-images/interactive-media-experience.webp" alt="Interactive Media Experience preview">
+            <div id="feature-custom-html" class="feature-custom-html"></div>
+            <div id="coming-soon-overlay" class="coming-soon-overlay" style="display: none;">
+              <span>Coming Soon</span>
+            </div>
           </div>
         </section>
 
     <div class="navigation-wrapper">
+          <div class="autoplay-toggle-container">
+            <span class="autoplay-label">Auto-play</span>
+            <label class="switch">
+              <input type="checkbox" id="autoplay-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
           <nav class="feature-navigation">
             <ul id="feature-menu">
-              <li class="active" data-feature="media" style="--i: 0; --bg: #211c1a;">Interactive Media Experience</li>
-              <li data-feature="gifs" style="--i: 1; --bg: #2b2422;">GIFs & Dynamic Animations</li>
-              <li data-feature="buttons" style="--i: 2; --bg: #352d2a;">Interactive Buttons & Hotspots</li>
-              <li data-feature="linking" style="--i: 3; --bg: #403733;">Internal & External Linking</li>
-              <li data-feature="smart-nav" style="--i: 4; --bg: #4a403b;">Smart Navigation</li>
-              <li data-feature="discovery" style="--i: 5; --bg: #544a44;">Content Discovery</li>
-              <li data-feature="lead-gen" style="--i: 6; --bg: #5f544d;">Lead Generation Form</li>
-              <li data-feature="gallery" style="--i: 7; --bg: #695e56;">Gallery & Library</li>
-              <li data-feature="presentation" style="--i: 8; --bg: #74685e;">Product Presentation</li>
-              <li data-feature="linking-prod" style="--i: 9; --bg: #7e7267;">Smart Product Linking</li>
-              <li data-feature="embed" style="--i: 10; --bg: #897d72;">Embedded Content</li>
-              <li data-feature="branding" style="--i: 11; --bg: #93877c;">Customized Branding</li>
-              <li data-feature="domain" style="--i: 12; --bg: #9e9286;">Custom Domain</li>
-              <li data-feature="flip" style="--i: 13; --bg: #a89c91;">Page Flip Effects</li>
-              <li data-feature="360-view" style="--i: 14; --bg: #b3a79b;">360° Product Visualization</li>
-              <li data-feature="ar" style="--i: 15; --bg: #beb2a6;">AR Experience</li>
-              <li data-feature="slideshow" style="--i: 16; --bg: #c8bcaf;">Automatic Slideshow</li>
-              <li data-feature="mobile" style="--i: 17; --bg: #d3c7ba;">Mobile-Friendly Experience</li>
-              <li data-feature="analytics" style="--i: 18; --bg: #dec2b4;">Analytics & Customer Insights</li>
-              <li data-feature="fingertips" style="--i: 19; --bg: #988c83;">Everything at Your Fingertips</li>
+              <li class="active" data-feature="360-view" style="--i: 0;">360° Product Visualization</li>
+              <li data-feature="ar" style="--i: 1;">AR Experience with QR Code</li>
+              <li data-feature="multi-view" style="--i: 2;">Multi-View Product Experience (Explode , functions)</li>
+              <li data-feature="product-selection" style="--i: 3;">Product Selection & Interaction</li>
+              <li data-feature="linking-prod" style="--i: 4;">Product Feature Highlights</li>
+              <li data-feature="analytics" style="--i: 5;">Analytics & Tracking</li>
+              <li data-feature="lead-gen" style="--i: 6;">Lead Forms</li>
+              <li data-feature="buttons" style="--i: 7;">Interactive Buttons & Hotspots</li>
+              <li data-feature="media" style="--i: 8;">Images, Videos ,Gif & Audio Support</li>
+              <li data-feature="embed" style="--i: 9;">Map Embed & Location Integration</li>
+              <li data-feature="gallery" style="--i: 10;">Library & Gallery Experience</li>
+              <li data-feature="social-sharing" style="--i: 11;">One-Tap Social Sharing</li>
+              <li data-feature="flip" style="--i: 12;">Page Flip Effects & Viewing Experience</li>
+              <li data-feature="fingertips" style="--i: 13;">Multi-Functional Layouts</li>
+              <li data-feature="background" style="--i: 14;">Background Customization ( Colors, Themes & Videos,images )</li>
+              <li data-feature="smart-nav" style="--i: 15;">Smart Navigation</li>
+              <li data-feature="website-embed" style="--i: 16;">Website Embed Integration</li>
+              <li data-feature="mobile" style="--i: 17;">Cross-Device Compatibility</li>
+              <li data-feature="discovery" style="--i: 18;">Search & Filter Functionality</li>
             </ul>
           </nav>
         </div>
@@ -189,6 +205,7 @@
   </div>
 
   
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
   <script src="script.js?v=3"></script>
 </body>
 </html>

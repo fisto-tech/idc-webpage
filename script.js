@@ -4,7 +4,12 @@ const featureData = {
   media: {
     title: "Interactive Media Experience",
     description: "Bring your catalogue to life with rich multimedia content. Showcase products using images, videos, audio, and animations to create a more engaging and immersive customer experience",
-    image: `${imageBase}/interactive-media-experience.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper media-wrapper">
+        <img class="custom-feature-img media-bg" src="assets/images/content-images/images-videos-and-gifs/catalogue-image.webp" alt="Catalogue">
+        <div id="media-svg-container" class="media-svg-container"></div>
+      </div>
+    `
   },
   gifs: {
     title: "GIFs & Dynamic Animations",
@@ -30,12 +35,141 @@ const featureData = {
   "smart-nav": {
     title: "Smart Navigation & Table of Contents",
     description: "Help users quickly find information through structured navigation and interactive content organization.",
-    image: `${imageBase}/smart-navigation.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper smart-nav-wrapper">
+
+        <!-- Left column: TOC popup only -->
+        <div class="sn-left-col">
+          <div class="sn-toc-popup anim-popup">
+            <div class="sn-toc-header">Table of Contents</div>
+            <div class="sn-toc-list">
+              <div class="sn-toc-item"><span>Introduction</span><span>01</span></div>
+              <div class="sn-toc-item"><span>About us</span><span>02</span></div>
+              <div class="sn-toc-item"><span>Why Choose us</span><span>03</span></div>
+              <div class="sn-toc-item"><span>Our Products</span><span>04</span></div>
+              <div class="sn-toc-item"><span>Gallery Page</span><span>05</span></div>
+              <div class="sn-toc-item"><span>360 Product View</span><span>06</span></div>
+              <div class="sn-toc-item"><span>Vision and Mission</span><span>08</span></div>
+              <div class="sn-toc-item"><span>Contact us</span><span>09</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrows: absolutely positioned relative to wrapper -->
+        <img class="sn-black-arrow anim-arrow" src="assets/images/content-images/smart-navigation/black-arrow.svg" alt="Arrow">
+        <img class="sn-white-arrow anim-arrow" src="assets/images/content-images/smart-navigation/white-arrow.svg" alt="White Arrow">
+
+        <!-- Right area: desktop image bleeding off the right -->
+        <div class="sn-right-col">
+          <img class="custom-feature-img sn-bg" src="assets/images/content-images/smart-navigation/desktop-image.webp" alt="Desktop Image">
+        </div>
+
+        <!-- Thumbnails spanning full bottom -->
+        <div class="sn-thumbnails-popup anim-popup-bottom">
+          <div class="sn-thumbnails-scroll">
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-01.webp" alt="Thumb 1">
+              <span>Page 1</span>
+            </div>
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-02.webp" alt="Thumb 2">
+              <span>Page 2-3</span>
+            </div>
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-03.webp" alt="Thumb 3">
+              <span>Page 4-5</span>
+            </div>
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-04.webp" alt="Thumb 4">
+              <span>Page 6-7</span>
+            </div>
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-05.webp" alt="Thumb 5">
+              <span>Page 8-9</span>
+            </div>
+            <div class="sn-thumb-item">
+              <img src="assets/images/content-images/smart-navigation/thumbnail-image-06.webp" alt="Thumb 6">
+              <span>Page 10</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `
   },
   discovery: {
     title: "Search & Content Discovery",
     description: "Allow users to instantly find products and content through powerful search and category navigation.",
-    image: `${imageBase}/content-discovery.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper search-filter-wrapper">
+        <div class="sf-inner-container">
+          <img class="custom-feature-img sf-bg" src="assets/images/content-images/search-and-filter-functionality/desktop-catalogue-image.webp" alt="Catalogue Background">
+          
+          <img src="assets/images/content-images/search-and-filter-functionality/white-arrow.svg" class="sf-arrow" alt="Arrow">
+          
+          <div class="sf-search-container">
+            <div class="sf-input-wrapper">
+              <svg class="sf-search-icon" viewBox="0 0 24 24" width="24" height="24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="sf-search-input" class="sf-search-input" placeholder="Search..." autocomplete="off">
+            </div>
+            <div class="sf-dropdown" id="sf-dropdown">
+              <div class="sf-dropdown-title">Recommended</div>
+              <ul id="sf-results-list" class="sf-results-list">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  background: {
+    title: "Background Customization ( Colors, Themes & Videos,images )",
+    description: "Customize every aspect of your catalogue to match your brand identity and create a professional experience.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper bg-custom-wrapper">
+        <div class="bg-center-container">
+          <div class="bg-catalogue-wrapper">
+            <div class="bg-custom-layers">
+              <div class="bg-layer active" id="bg-solid"></div>
+              <div class="bg-layer" id="bg-gradient"></div>
+              <div class="bg-layer" id="bg-image" style="background-image: url('assets/images/content-images/background-customization/bg-image.webp')"></div>
+              <div class="bg-layer" id="bg-theme"></div>
+              <div class="bg-layer" id="bg-video">
+                <video id="bg-video-el" muted loop playsinline src="assets/images/content-images/background-customization/compressed-background-video.mp4"></video>
+              </div>
+            </div>
+            <img class="bg-catalogue-img" src="assets/images/content-images/background-customization/desktop-elements-all-grouped.webp" alt="Catalogue">
+          </div>
+          <img class="bg-text-img" src="assets/images/content-images/background-customization/fully-customizable-backgrounds-text.svg" alt="Fully Customizable Backgrounds">
+        </div>
+        
+        <div class="bg-sidebar">
+          <div class="bg-sidebar-item active" data-type="solid">
+            <img src="assets/images/content-images/background-customization/solid-color.jpg" alt="Solid">
+            <span>Solid</span>
+          </div>
+          <div class="bg-sidebar-item" data-type="gradient">
+            <img src="assets/images/content-images/background-customization/gradient-color.webp" alt="Gradient">
+            <span>Gradient</span>
+          </div>
+          <div class="bg-sidebar-item" data-type="image">
+            <img src="assets/images/content-images/background-customization/bg-image.webp" alt="Image">
+            <span>Image</span>
+          </div>
+          <div class="bg-sidebar-item" data-type="theme">
+            <div class="theme-icon"></div>
+            <span>Theme</span>
+          </div>
+          <div class="bg-sidebar-item" data-type="video">
+            <div class="video-icon-wrapper">
+              <video src="assets/images/content-images/background-customization/compressed-background-video.mp4" muted></video>
+            </div>
+            <span>Video</span>
+          </div>
+        </div>
+      </div>
+    `
   },
   "lead-gen": {
     title: "Lead Generation & Contact Forms",
@@ -152,23 +286,185 @@ const featureData = {
   'multi-view': {
     title: "Multi-View Product Experience",
     description: "Interactive explode views and detailed function demonstrations.",
-    image: `${imageBase}/interactive-media-experience.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper multi-view-wrapper">
+        <div class="mv-top-bar">
+          <div class="mv-title">
+            <img src="assets/images/content-images/multi-view-product-experience/360-image.svg" alt="360 Icon">
+            <span>3D Multi view Product Visualization</span>
+          </div>
+          <div class="mv-controls">
+            <button class="mv-btn active" id="mv-normal-btn">Normal View</button>
+            <button class="mv-btn" id="mv-explode-btn">Explode View</button>
+          </div>
+        </div>
+        
+        <div class="mv-main-area">
+          <img class="mv-arrow left" src="assets/images/content-images/smart-navigation/black-arrow.svg" alt="Left">
+          
+          <div class="mv-video-container">
+             <video id="mv-video" src="assets/images/content-images/multi-view-product-experience/normal-view-video.mp4" autoplay loop muted playsinline></video>
+             
+          </div>
+          
+          <img class="mv-arrow right" src="assets/images/content-images/smart-navigation/black-arrow.svg" alt="Right">
+          
+          <div class="mv-thumbnails">
+            <div class="mv-thumb active"><div class="mv-thumb-img"></div><span>View 1</span></div>
+            <div class="mv-thumb"><div class="mv-thumb-img"></div><span>View 2</span></div>
+            <div class="mv-thumb"><div class="mv-thumb-img"></div><span>View 3</span></div>
+            <div class="mv-thumb"><div class="mv-thumb-img"></div><span>View 4</span></div>
+          </div>
+        </div>
+      </div>
+    `
   },
   'product-selection': {
     title: "Product Selection & Interaction",
     description: "Seamless product selection, customization, and interaction.",
-    image: `${imageBase}/interactive-media-experience.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper product-selection-wrapper">
+        <div class="ps-image-group">
+          <img class="custom-feature-img ps-bg" src="assets/images/content-images/product-selection-and-interaction/catalogue-image.webp" alt="Catalogue Background">
+          <img class="ps-title-text" src="assets/images/content-images/product-selection-and-interaction/easy-product-selection-text.svg" alt="Easy Product Selection">
+          <img class="ps-red-arrow" src="assets/images/content-images/product-selection-and-interaction/red-arrow.svg" alt="Arrow">
+        </div>
+        
+        <div class="ps-modal-overlay">
+          <div class="ps-modal">
+            <button class="ps-modal-close" id="ps-close-btn">&times;</button>
+            <div class="ps-modal-top">
+              <div class="ps-modal-left">
+                <h3>ENTER DETAILS</h3>
+                
+                <div class="ps-form-group">
+                  <label>Pipe Size (DN)</label>
+                  <div class="ps-dropdown" id="ps-pipe-dropdown">
+                    <input type="text" class="ps-dropdown-input" placeholder="Select Pipe Size" data-key="pipe">
+                    <div class="ps-dropdown-list"></div>
+                  </div>
+                </div>
+
+                <div class="ps-form-group">
+                  <label>Flow Range (m³/h)</label>
+                  <div class="ps-dropdown" id="ps-flow-dropdown">
+                    <input type="text" class="ps-dropdown-input" placeholder="Select Flow Range" data-key="flow">
+                    <div class="ps-dropdown-list"></div>
+                  </div>
+                </div>
+
+                <div class="ps-form-group">
+                  <label>Power Supply</label>
+                  <div class="ps-dropdown" id="ps-power-dropdown">
+                    <input type="text" class="ps-dropdown-input" placeholder="Select Power Supply" data-key="power">
+                    <div class="ps-dropdown-list"></div>
+                  </div>
+                </div>
+
+                <div class="ps-modal-actions">
+                  <button class="ps-btn ps-btn-search" id="ps-btn-search">Search</button>
+                  <button class="ps-btn ps-btn-reset" id="ps-btn-reset">Reset</button>
+                </div>
+                <div class="ps-error-msg" id="ps-error-msg">Product not found. Please try different options.</div>
+              </div>
+              
+              <div class="ps-modal-right">
+                <div class="ps-preview-placeholder" id="ps-preview-placeholder">
+                  Search to view details
+                </div>
+                <div class="ps-preview-content" id="ps-preview-content">
+                  <img src="assets/images/content-images/product-selection-and-interaction/popup-product-image.webp" alt="Product">
+                  <h4 class="ps-product-model" id="ps-product-model"></h4>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ps-modal-bottom">
+              <div class="ps-table-container">
+                <table class="ps-spec-table" id="ps-spec-table">
+                  <thead>
+                    <tr>
+                      <th>Model No</th>
+                      <th>Pipe Size (DN)</th>
+                      <th>Flow Range (m³/h)</th>
+                      <th>Accuracy</th>
+                      <th>Pressure Rating</th>
+                      <th>Power Supply</th>
+                      <th>Out Signal</th>
+                      <th>Protection Class</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td id="td-model"></td>
+                      <td id="td-pipe"></td>
+                      <td id="td-flow"></td>
+                      <td id="td-accuracy">±0.5% of rate</td>
+                      <td id="td-pressure">PN16</td>
+                      <td id="td-power"></td>
+                      <td id="td-signal">Pulse + 4-20mA</td>
+                      <td id="td-protection">IP65</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
   },
   'social-sharing': {
     title: "One-Tap Social Sharing",
-    description: "Easily share content across social media platforms with a single tap.",
-    image: `${imageBase}/interactive-media-experience.webp`
+    description: "Allow users to instantly share catalogue pages, products, and content across their favorite social media platforms with a single tap. Increase visibility, improve engagement, and help your content reach a wider audience effortlessly.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper social-sharing-wrapper">
+        <div class="ss-inner-container">
+          <img class="custom-feature-img ss-bg" src="assets/images/content-images/one-tap-to-social/desktop-idc-image.webp" alt="Desktop Background">
+          <img src="assets/images/content-images/one-tap-to-social/click-icon.svg" class="ss-click-icon" alt="Click Icon">
+          <img src="assets/images/content-images/one-tap-to-social/share-icon.webp" class="ss-share-icon" alt="Click Icon">
+          <img src="assets/images/content-images/one-tap-to-social/one-tap-to-share.svg" class="ss-one-tap-to-share-text" alt="Click Icon">
+          
+          <div class="ss-popup">
+          <div class="ss-popup-header">
+            <h3>Share Flipbook</h3>
+            <button class="ss-close-btn">&times;</button>
+          </div>
+          
+          <div class="ss-popup-body">
+            <div class="ss-section">
+              <label>Flipbook Link</label>
+              <div class="ss-link-container">
+                <div class="ss-link-box">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ss-link-icon"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <input type="text" value="https://www.fist-o.com/Fistotech_IDC/" id="ss-link-input" readonly>
+                </div>
+                <button class="ss-copy-btn" id="ss-copy-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ss-copy-icon" id="ss-copy-svg"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span id="ss-copy-text">Copy</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="ss-section ss-qr-section">
+              <label>Share through QR code</label>
+              <div class="ss-qr-container">
+                <img src="assets/images/content-images/one-tap-to-social/qr-code.jpg" alt="QR Code" class="ss-qr-img">
+                <a href="assets/images/content-images/one-tap-to-social/qr-code.jpg" download="flipbook-qr-code.jpg" class="ss-download-qr">Download QR Code</a>
+              </div>
+            </div>
+            
+            <div class="ss-section ss-social-section">
+              <label>Share Through</label>
+              <div id="ss-social-svg-container" class="ss-social-svg-container"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    `
   },
-  background: {
-    title: "Background Customization",
-    description: "Personalize your catalog with custom colors, themes, images, and video backgrounds.",
-    image: `${imageBase}/interactive-media-experience.webp`
-  },
+
   'website-embed': {
     title: "Website Embed Integration",
     description: "Seamlessly integrate your digital catalog directly into your website.",
@@ -294,6 +590,57 @@ function setActiveFeature(featureKey) {
         }, 50);
       }
 
+      if (featureKey === 'multi-view') {
+        setTimeout(() => {
+          const normalBtn = document.getElementById('mv-normal-btn');
+          const explodeBtn = document.getElementById('mv-explode-btn');
+          const video = document.getElementById('mv-video');
+
+          if(normalBtn && explodeBtn && video) {
+            normalBtn.addEventListener('click', () => {
+              normalBtn.classList.add('active');
+              explodeBtn.classList.remove('active');
+              video.src = 'assets/images/content-images/multi-view-product-experience/normal-view-video.mp4';
+              video.play().catch(()=>{});
+            });
+
+            explodeBtn.addEventListener('click', () => {
+              explodeBtn.classList.add('active');
+              normalBtn.classList.remove('active');
+              video.src = 'assets/images/content-images/multi-view-product-experience/exploded-view-video.mp4';
+              video.play().catch(()=>{});
+            });
+          }
+        }, 50);
+      }
+
+      if (featureKey === 'media') {
+        setTimeout(() => {
+          fetch('assets/images/content-images/images-videos-and-gifs/buttons-and-arrows.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('<svg ', '<svg style="width: 100%; height: auto;" ');
+              
+              // Apply arrow animations
+              svg = svg.replace('<g filter="url(#filter0', '<g class="media-arrow media-arrow-1" filter="url(#filter0');
+              svg = svg.replace('<g filter="url(#filter1', '<g class="media-arrow media-arrow-2" filter="url(#filter1');
+              svg = svg.replace('<g filter="url(#filter4', '<g class="media-arrow media-arrow-3" filter="url(#filter4');
+              svg = svg.replace('<g filter="url(#filter5', '<g class="media-arrow media-arrow-4" filter="url(#filter5');
+              svg = svg.replace('<g filter="url(#filter6', '<g class="media-arrow media-arrow-5" filter="url(#filter6');
+              
+              // Apply label animations
+              svg = svg.replace('<g filter="url(#filter2', '<g class="media-label media-label-1" filter="url(#filter2');
+              svg = svg.replace('<g filter="url(#filter3', '<g class="media-label media-label-2" filter="url(#filter3');
+              svg = svg.replace('<g filter="url(#filter7', '<g class="media-label media-label-3" filter="url(#filter7');
+              svg = svg.replace('<g filter="url(#filter8', '<g class="media-label media-label-4" filter="url(#filter8');
+              svg = svg.replace('<g filter="url(#filter9', '<g class="media-label media-label-5" filter="url(#filter9');
+
+              const container = document.getElementById('media-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+
       if (featureKey === 'embed') {
         setTimeout(() => {
           fetch('assets/images/content-images/embedded-content-integration/video-embed.svg')
@@ -317,6 +664,12 @@ function setActiveFeature(featureKey) {
               const container = document.getElementById('embed-map-svg-container');
               if (container) container.innerHTML = svg;
             });
+        }, 50);
+      }
+
+      if (featureKey === 'product-selection') {
+        setTimeout(() => {
+          setupProductSelectionModal();
         }, 50);
       }
 
@@ -443,6 +796,173 @@ function setActiveFeature(featureKey) {
             });
         }, 50);
       }
+
+      if (featureKey === 'social-sharing') {
+        setTimeout(() => {
+          const copyBtn = document.getElementById('ss-copy-btn');
+          const linkInput = document.getElementById('ss-link-input');
+          const copyText = document.getElementById('ss-copy-text');
+          const copySvg = document.getElementById('ss-copy-svg');
+          if (copyBtn && linkInput && copyText && copySvg) {
+            copyBtn.addEventListener('click', () => {
+              linkInput.select();
+              document.execCommand('copy');
+              copyText.textContent = 'Copied!';
+              copySvg.style.display = 'none';
+              setTimeout(() => {
+                copyText.textContent = 'Copy';
+                copySvg.style.display = 'block';
+              }, 2000);
+            });
+          }
+          
+          fetch('assets/images/content-images/one-tap-to-social/social-media.svg')
+            .then(r => r.text())
+            .then(svg => {
+              // Wrap each icon in an animated group
+              svg = svg.replace(/(<path d="M0 10\.5406[\s\S]*?clip0_2702_65"\)>\n[\s\S]*?<\/g>)/, '<g class="ss-social-icon" style="animation-delay: 0.8s">$1</g>');
+              svg = svg.replace(/(<path d="M73\.2891 10\.5406[\s\S]*?clip1_2702_65"\)>\n[\s\S]*?<\/g>)/, '<g class="ss-social-icon" style="animation-delay: 0.9s">$1</g>');
+              svg = svg.replace(/(<path d="M157\.072 0\.484375[\s\S]*?clip2_2702_65"\)>\n[\s\S]*?<\/g>)/, '<g class="ss-social-icon" style="animation-delay: 1.0s">$1</g>');
+              svg = svg.replace(/(<path d="M219\.867 10\.5406[\s\S]*?clip3_2702_65"\)>\n[\s\S]*?<\/g>)/, '<g class="ss-social-icon" style="animation-delay: 1.1s">$1</g>');
+              svg = svg.replace(/(<g clip-path="url\(#clip4_2702_65"\)>[\s\S]*?<\/g>)/, '<g class="ss-social-icon" style="animation-delay: 1.2s">$1</g>');
+
+              const container = document.getElementById('ss-social-svg-container');
+              if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+
+      if (featureKey === 'discovery') {
+        setTimeout(() => {
+          const searchInput = document.getElementById('sf-search-input');
+          const resultsList = document.getElementById('sf-results-list');
+          
+          const database = [
+            { text: "Showcases into in...", count: "03" },
+            { text: "Shopping links th...", count: "03" },
+            { text: "Shoe that perfor...", count: "03" },
+            { text: "Shorts and pants...", count: "02" },
+            { text: "Shirts for men...", count: "05" },
+            { text: "Water bottles...", count: "01" },
+            { text: "Oil bottles...", count: "02" },
+            { text: "Product shoes...", count: "04" },
+            { text: "Plastic bottles...", count: "03" }
+          ];
+
+          const renderResults = (query) => {
+            if (!resultsList) return;
+            resultsList.innerHTML = '';
+            
+            const q = query ? query.trim().toLowerCase() : '';
+            if (q === '') {
+              // Hide suggestions if empty
+              return;
+            }
+
+            const filtered = database.filter(item => item.text.toLowerCase().includes(q)).slice(0, 3);
+            
+            if (filtered.length === 0) {
+              resultsList.innerHTML = '<li class="sf-result-item"><span class="sf-result-text">No results found</span></li>';
+              return;
+            }
+
+            filtered.forEach(item => {
+              const li = document.createElement('li');
+              li.className = 'sf-result-item';
+              
+              let highlightedText = item.text;
+              if (q) {
+                const regex = new RegExp(`(${q})`, 'gi');
+                highlightedText = item.text.replace(regex, '<strong>$1</strong>');
+              }
+              
+              li.innerHTML = `
+                <span class="sf-result-text">${highlightedText}</span>
+                <span class="sf-result-count">${item.count}</span>
+              `;
+              resultsList.appendChild(li);
+            });
+          };
+
+          if (searchInput) {
+            renderResults(searchInput.value);
+            searchInput.addEventListener('input', (e) => {
+              renderResults(e.target.value);
+            });
+          }
+        }, 50);
+      }
+
+      if (featureKey === 'background') {
+        setTimeout(() => {
+          const sidebarItems = document.querySelectorAll('.bg-sidebar-item');
+          const layers = document.querySelectorAll('.bg-layer');
+          const videoEl = document.getElementById('bg-video-el');
+          const themeLayer = document.getElementById('bg-theme');
+
+          const catalogueWrapper = document.querySelector('.bg-catalogue-wrapper');
+
+          if (catalogueWrapper && themeLayer) {
+            catalogueWrapper.addEventListener('mousemove', (e) => {
+              if(!themeLayer.classList.contains('active')) return;
+              const bubble = document.createElement('div');
+              bubble.className = 'bg-theme-bubble';
+              const rect = catalogueWrapper.getBoundingClientRect();
+              bubble.style.left = (e.clientX - rect.left) + 'px';
+              bubble.style.top = (e.clientY - rect.top) + 'px';
+              themeLayer.appendChild(bubble);
+              setTimeout(() => { bubble.remove(); }, 1000);
+            });
+          }
+
+          if (window.bgAutoTimer) clearInterval(window.bgAutoTimer);
+
+          const startBgAuto = () => {
+             if (window.bgAutoTimer) clearInterval(window.bgAutoTimer);
+             window.bgAutoTimer = setInterval(() => {
+                const items = document.querySelectorAll('.bg-sidebar-item');
+                if(!items.length) {
+                   clearInterval(window.bgAutoTimer);
+                   return;
+                }
+                const active = document.querySelector('.bg-sidebar-item.active');
+                let next = active ? active.nextElementSibling : items[0];
+                if(!next || !next.classList.contains('bg-sidebar-item')) next = items[0];
+                next.click();
+             }, 6000);
+          };
+
+          sidebarItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+              sidebarItems.forEach(i => i.classList.remove('active'));
+              item.classList.add('active');
+
+              const type = item.dataset.type;
+              layers.forEach(l => l.classList.remove('active'));
+              
+              const activeLayer = document.getElementById('bg-' + type);
+              if (activeLayer) {
+                activeLayer.classList.add('active');
+              }
+
+              if (type === 'video' && videoEl) {
+                videoEl.play().catch(()=>{});
+              } else if (videoEl) {
+                videoEl.pause();
+              }
+              
+              if(e && e.isTrusted) {
+                  // Only reset timer if click is manual
+                  startBgAuto();
+              }
+            });
+          });
+          
+          const first = document.querySelector('.bg-sidebar-item.active');
+          if(first) first.click();
+          startBgAuto();
+        }, 50);
+      }
     } else {
       customHtmlContainer.style.display = 'none';
       customHtmlContainer.innerHTML = '';
@@ -521,7 +1041,7 @@ const iconSVGs = {
   'website-embed': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="16 10 20 10 20 14"/><polyline points="4 14 4 10 8 10"/></svg>`
 };
 
-const comingSoonFeatures = ['multi-view', 'product-selection', 'social-sharing', 'background', 'website-embed'];
+const comingSoonFeatures = ['website-embed'];
 
 document.querySelectorAll('#feature-menu li[data-feature]').forEach(li => {
   const feature = li.dataset.feature;
@@ -761,3 +1281,176 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// ─── Product Selection Feature Logic ─────
+const productDummyData = [
+  { model: "FM-050", pipe: "DN50", flow: "1 - 80", power: "24V DC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-065", pipe: "DN65", flow: "2 - 120", power: "24V DC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-080", pipe: "DN80", flow: "5 - 200", power: "24V DC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-100", pipe: "DN100", flow: "10 - 300", power: "24V DC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-125", pipe: "DN125", flow: "15 - 500", power: "220V AC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-150", pipe: "DN150", flow: "20 - 800", power: "220V AC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-200", pipe: "DN200", flow: "30 - 1200", power: "220V AC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-250", pipe: "DN250", flow: "50 - 2000", power: "220V AC", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse + 4-20mA", protection: "IP65" },
+  { model: "FM-300", pipe: "DN300", flow: "80 - 3000", power: "Battery", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse", protection: "IP65" },
+  { model: "FM-350", pipe: "DN350", flow: "100 - 4000", power: "Battery", accuracy: "±0.5% of rate", pressure: "PN16", signal: "Pulse", protection: "IP65" },
+];
+
+window.setupProductSelectionModal = function() {
+  const modalWrapper = document.querySelector('.product-selection-wrapper');
+  if (!modalWrapper) return;
+
+  const inputs = {
+    pipe: document.querySelector('#ps-pipe-dropdown input'),
+    flow: document.querySelector('#ps-flow-dropdown input'),
+    power: document.querySelector('#ps-power-dropdown input')
+  };
+
+  const lists = {
+    pipe: document.querySelector('#ps-pipe-dropdown .ps-dropdown-list'),
+    flow: document.querySelector('#ps-flow-dropdown .ps-dropdown-list'),
+    power: document.querySelector('#ps-power-dropdown .ps-dropdown-list')
+  };
+
+  const btnSearch = document.getElementById('ps-btn-search');
+  const btnReset = document.getElementById('ps-btn-reset');
+  const btnClose = document.getElementById('ps-close-btn');
+  const errorMsg = document.getElementById('ps-error-msg');
+  const previewPlaceholder = document.getElementById('ps-preview-placeholder');
+  const previewContent = document.getElementById('ps-preview-content');
+  const productModelText = document.getElementById('ps-product-model');
+  const specTableContainer = document.querySelector('.ps-table-container');
+
+  let currentSelections = { pipe: '', flow: '', power: '' };
+
+  function getFilteredOptions(key) {
+    return [...new Set(productDummyData.filter(item => {
+      let match = true;
+      Object.keys(currentSelections).forEach(k => {
+        if (k !== key && currentSelections[k] && item[k] !== currentSelections[k]) {
+          match = false;
+        }
+      });
+      return match;
+    }).map(item => item[key]))];
+  }
+
+  function renderList(key, filterText = '') {
+    const listEl = lists[key];
+    listEl.innerHTML = '';
+    const options = getFilteredOptions(key);
+    const filteredOptions = options.filter(opt => opt.toLowerCase().includes(filterText.toLowerCase()));
+    
+    if (filteredOptions.length === 0) {
+      const div = document.createElement('div');
+      div.className = 'ps-dropdown-item disabled';
+      div.textContent = 'No options available';
+      listEl.appendChild(div);
+    } else {
+      filteredOptions.forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'ps-dropdown-item';
+        div.textContent = opt;
+        div.addEventListener('click', () => {
+          inputs[key].value = opt;
+          currentSelections[key] = opt;
+          listEl.classList.remove('show');
+        });
+        listEl.appendChild(div);
+      });
+    }
+  }
+
+  Object.keys(inputs).forEach(key => {
+    const input = inputs[key];
+    const list = lists[key];
+
+    input.addEventListener('focus', () => {
+      Object.values(lists).forEach(l => { if(l !== list) l.classList.remove('show') });
+      renderList(key, input.value);
+      list.classList.add('show');
+    });
+
+    input.addEventListener('input', (e) => {
+      currentSelections[key] = ''; 
+      renderList(key, e.target.value);
+      list.classList.add('show');
+    });
+
+    input.addEventListener('keydown', (e) => {
+      const items = Array.from(list.querySelectorAll('.ps-dropdown-item:not(.disabled)'));
+      if (items.length === 0) return;
+      let activeIdx = items.findIndex(item => item.classList.contains('active'));
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIdx = (activeIdx + 1) % items.length;
+        items.forEach(i => i.classList.remove('active'));
+        items[activeIdx].classList.add('active');
+        items[activeIdx].scrollIntoView({block: 'nearest'});
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIdx = activeIdx <= 0 ? items.length - 1 : activeIdx - 1;
+        items.forEach(i => i.classList.remove('active'));
+        items[activeIdx].classList.add('active');
+        items[activeIdx].scrollIntoView({block: 'nearest'});
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (activeIdx > -1) {
+          items[activeIdx].click();
+        } else if (items.length === 1) {
+          items[0].click();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.ps-dropdown')) {
+      Object.values(lists).forEach(l => l.classList.remove('show'));
+    }
+  });
+
+  btnSearch.addEventListener('click', () => {
+    errorMsg.style.display = 'none';
+    const pipe = inputs.pipe.value;
+    const flow = inputs.flow.value;
+    const power = inputs.power.value;
+
+    const matchedProduct = productDummyData.find(p => p.pipe === pipe && p.flow === flow && p.power === power);
+
+    if (matchedProduct) {
+      previewPlaceholder.style.display = 'none';
+      previewContent.style.display = 'flex';
+      productModelText.textContent = matchedProduct.model;
+
+      document.getElementById('td-model').textContent = matchedProduct.model;
+      document.getElementById('td-pipe').textContent = matchedProduct.pipe;
+      document.getElementById('td-flow').textContent = matchedProduct.flow;
+      document.getElementById('td-power').textContent = matchedProduct.power;
+      document.getElementById('td-accuracy').textContent = matchedProduct.accuracy;
+      document.getElementById('td-pressure').textContent = matchedProduct.pressure;
+      document.getElementById('td-signal').textContent = matchedProduct.signal;
+      document.getElementById('td-protection').textContent = matchedProduct.protection;
+
+      specTableContainer.classList.add('show');
+    } else {
+      errorMsg.style.display = 'block';
+    }
+  });
+
+  btnReset.addEventListener('click', () => {
+    Object.values(inputs).forEach(input => input.value = '');
+    currentSelections = { pipe: '', flow: '', power: '' };
+    errorMsg.style.display = 'none';
+    previewPlaceholder.style.display = 'flex';
+    previewContent.style.display = 'none';
+    specTableContainer.classList.remove('show');
+  });
+
+  if (btnClose) {
+    btnClose.addEventListener('click', () => {
+       btnReset.click();
+    });
+  }
+};

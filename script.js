@@ -116,9 +116,33 @@ const featureData = {
     image: `${imageBase}/designed-for-every-screen.webp`
   },
   analytics: {
-    title: "Analytics & Customer Insights",
+    title: "Analytics & Tracking",
     description: "Track user engagement and gain valuable insights into customer behavior and content performance.",
-    image: `${imageBase}/analytics-and-customer-insights.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <div id="analytics-svg-container" style="width: 100%; max-width: 881px;"></div>
+      </div>
+    `
+  },
+  'lead-gen': {
+    title: "Lead Forms",
+    description: "Capture leads effortlessly with interactive forms seamlessly integrated into your digital catalogue.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper lead-gen-wrapper">
+        <div class="lead-frame-container">
+          <img class="custom-feature-img lead-bg-desktop" src="assets/images/content-images/lead-generation/desktop-frame.webp" alt="Desktop Frame">
+          
+          <img id="lead-enquiry-form" class="lead-form-anim lead-enquiry" src="assets/images/content-images/lead-generation/enquiry-form.webp" alt="Enquiry Form">
+          <img id="lead-lead-form" class="lead-form-anim lead-lead" src="assets/images/content-images/lead-generation/lead-form.webp" alt="Lead Form">
+          <img id="lead-contact-form" class="lead-form-anim lead-contact" src="assets/images/content-images/lead-generation/contact-form.webp" alt="Contact Form">
+          <img id="lead-quiz-form" class="lead-form-anim lead-quiz" src="assets/images/content-images/lead-generation/quiz-form.webp" alt="Quiz Form">
+        </div>
+        
+        <div class="lead-bottom-container">
+          <img class="lead-bottom-lists" src="assets/images/content-images/lead-generation/bottom-lists.svg" alt="Features List">
+        </div>
+      </div>
+    `
   },
   fingertips: {
     title: "Everything at Your Fingertips",
@@ -191,7 +215,7 @@ const featureData = {
             rotation-per-second="30deg"
             camera-controls 
             shadow-intensity="1" 
-            style="width: 100%; height: 100%; background-color: transparent;"
+            style="width: 100%; height: 100%; background-color: transparent; margin-left: -6%; margin-top: -2%;"
             interaction-prompt="none"
           ></model-viewer>
         </div>
@@ -282,7 +306,7 @@ function setActiveFeature(featureKey) {
               const container = document.getElementById('embed-video-svg-container');
               if (container) container.innerHTML = svg;
             });
-            
+
           fetch('assets/images/content-images/embedded-content-integration/google-map-embed.svg')
             .then(r => r.text())
             .then(svg => {
@@ -302,16 +326,120 @@ function setActiveFeature(featureKey) {
             .then(r => r.text())
             .then(svg => {
               svg = svg.replace('<svg ', '<svg style="width: 100%; height: auto;" ');
-              
+
               // The red arrow path starts with M2.10433
               svg = svg.replace('<path d="M2.10433', '<path class="fisto-clip-reveal-up-left" d="M2.10433');
-              
+
               // The black text starts with M323.124. We wrap it and everything after it in a popup group
               svg = svg.replace('<path d="M323.124', '<g class="fisto-popup-btn-1" style="transform-origin: right bottom;"><path d="M323.124');
               svg = svg.replace('</svg>', '</g></svg>');
-              
+
               const container = document.getElementById('model-360-svg-container');
               if (container) container.innerHTML = svg;
+            });
+        }, 50);
+      }
+
+      if (featureKey === 'analytics') {
+        setTimeout(() => {
+          fetch('assets/images/content-images/analysis-and-tracking/full-image.svg')
+            .then(r => r.text())
+            .then(svg => {
+              svg = svg.replace('<svg ', '<svg class="analytics-svg" style="width: 100%; height: auto; max-height: 56.5vh;" ');
+              
+              // Apply scale animations to inner chart elements
+              // Center Pie 1
+              svg = svg.replace(/(<path d="M462\.198 183\.036[\s\S]*?<path d="M495\.198 166\.361[\s\S]*?\/>)/, '<g class="analytics-scale-item" style="animation-delay: 0.4s;">$1</g>');
+              // Center Pie 2
+              svg = svg.replace(/(<path d="M491\.107 248\.242[\s\S]*?<path d="M476\.386 273\.002[\s\S]*?\/>)/, '<g class="analytics-scale-item" style="animation-delay: 0.5s;">$1</g>');
+              // Center Bar Chart
+              svg = svg.replace(/(<path d="M367\.929 214\.748[\s\S]*?<path d="M433\.917 154\.426[\s\S]*?\/>)/, '<g class="analytics-scale-up" style="animation-delay: 0.6s;">$1</g>');
+              // Center Line Chart
+              svg = svg.replace(/(<path d="M318\.104 209\.688[\s\S]*?<path d="M390\.723 150\.685[\s\S]*?\/>)/, '<g class="analytics-scale-item" style="animation-delay: 0.7s;">$1</g>');
+              // Top-Left Pie Chart
+              svg = svg.replace(/(<path d="M205\.368 101\.715[\s\S]*?<path d="M180\.002 75\.9387[\s\S]*?\/>)/, '<g class="analytics-scale-item" style="animation-delay: 0.8s;">$1</g>');
+              // Bottom-Left Line Chart
+              svg = svg.replace(/(<path d="M168\.45 240\.513[\s\S]*?<path d="M219\.785 208\.943[\s\S]*?\/>)/, '<g class="analytics-scale-item" style="animation-delay: 0.9s;">$1</g>');
+              
+              // The Man
+              svg = svg.replace(/(<path d="M115\.267 275\.225[\s\S]*?<path d="M101\.361 231\.907[\s\S]*?\/>)/, '<g class="analytics-man">$1</g>');
+
+              const container = document.getElementById('analytics-svg-container');
+              if (container) {
+                container.innerHTML = svg;
+                const svgEl = container.querySelector('svg');
+                if (svgEl) {
+                  const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+                  style.textContent = `
+                    @keyframes analyticsPopIn {
+                      0%, 5%, 95%, 100% { opacity: 0; transform: translateX(30px) scale(0.9); }
+                      15%, 85% { opacity: 1; transform: translateX(0) scale(1); }
+                    }
+                    @keyframes manFadeIn {
+                      0% { opacity: 0; }
+                      100% { opacity: 1; }
+                    }
+                    @keyframes manFloat {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-6px); }
+                    }
+                    @keyframes analyticsChartGrow {
+                      0%, 5%, 95%, 100% { opacity: 0; transform: scale(0); }
+                      15%, 85% { opacity: 1; transform: scale(1); }
+                    }
+                    @keyframes analyticsBarGrow {
+                      0%, 5%, 95%, 100% { opacity: 0; transform: scaleY(0); }
+                      15%, 85% { opacity: 1; transform: scaleY(1); }
+                    }
+                    .analytics-item {
+                      opacity: 0;
+                      animation: analyticsPopIn 10s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+                      transform-origin: center right;
+                    }
+                    .analytics-scale-item {
+                      opacity: 0;
+                      transform-box: fill-box;
+                      transform-origin: 50% 50%;
+                      animation: analyticsChartGrow 10s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+                    }
+                    .analytics-scale-up {
+                      opacity: 0;
+                      transform-box: fill-box;
+                      transform-origin: 50% 100%;
+                      animation: analyticsBarGrow 10s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+                    }
+                    .analytics-man {
+                      opacity: 0;
+                      transform-origin: bottom center;
+                      animation: manFadeIn 1.5s ease-out forwards, manFloat 5s ease-in-out infinite;
+                    }
+                  `;
+                  svgEl.appendChild(style);
+
+                  const children = Array.from(svgEl.children);
+                  const insertBeforeNode = children[20];
+
+                  // Wrap 5 right side items
+                  for (let i = 0; i < 5; i++) {
+                    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    g.classList.add('analytics-item');
+                    g.style.animationDelay = `${i * 0.15 + 0.3}s`;
+
+                    for (let j = 0; j < 4; j++) {
+                      if (children[i * 4 + j]) {
+                        g.appendChild(children[i * 4 + j]);
+                      }
+                    }
+                    if (insertBeforeNode) {
+                      svgEl.insertBefore(g, insertBeforeNode);
+                    } else {
+                      svgEl.appendChild(g);
+                    }
+                  }
+
+                  }
+                }
+              
             });
         }, 50);
       }

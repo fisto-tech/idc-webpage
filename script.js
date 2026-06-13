@@ -187,9 +187,20 @@ const featureData = {
     image: `${imageBase}/product-presentation.webp`
   },
   "linking-prod": {
-    title: "Product Tags & Smart Product Linking",
-    description: "Connect related products and improve product discovery with intelligent product linking.",
-    image: `${imageBase}/smart-product-linking.webp`
+    title: "Product Feature Highlights",
+    description: "Highlight important product specifications and features with interactive tags and popups.",
+    htmlContent: `
+      <div class="fisto-vw-wrapper pfh-wrapper">
+        <div class="pfh-container">
+           <img src="assets/images/content-images/product-feature-highlights/catalogue-image.webp" class="pfh-catalogue" alt="Catalogue View">
+           <img src="assets/images/content-images/product-feature-highlights/section-image.webp" class="pfh-section" alt="Feature Details">
+           <img src="assets/images/content-images/product-feature-highlights/important-specifications.svg" class="pfh-spec-tag" alt="Important Specifications">
+           <img src="assets/images/content-images/product-feature-highlights/curve-arrow.svg" class="pfh-curve-arrow" alt="Arrow">
+           <img src="assets/images/content-images/product-feature-highlights/view-more.svg" class="pfh-view-more" alt="View More">
+           <img src="assets/images/content-images/product-feature-highlights/highlight-more-features.svg" class="pfh-highlight-tag" alt="Highlight More Features">
+        </div>
+      </div>
+    `
   },
   embed: {
     title: "Embedded Content Integration",
@@ -468,7 +479,21 @@ const featureData = {
   'website-embed': {
     title: "Website Embed Integration",
     description: "Seamlessly integrate your digital catalog directly into your website.",
-    image: `${imageBase}/interactive-media-experience.webp`
+    htmlContent: `
+      <div class="fisto-vw-wrapper website-embed-wrapper">
+        <div class="we-container">
+           <img src="assets/images/content-images/website-embed-integration/website-image.webp" class="we-website-img" alt="Website View">
+           
+           <img src="assets/images/content-images/website-embed-integration/catalogue-image.webp" class="we-catalogue-img" alt="Embedded Catalogue">
+           
+           <img src="assets/images/content-images/website-embed-integration/embed-catalogue-text.svg" class="we-text-1" alt="Embed Catalogue">
+           <img src="assets/images/content-images/website-embed-integration/embed-catalogue-arrow.svg" class="we-arrow-1" alt="Arrow">
+           
+           <img src="assets/images/content-images/website-embed-integration/view-from-your-website-text.svg" class="we-text-2" alt="View From Your Website">
+           <img src="assets/images/content-images/website-embed-integration/view-from-your-website-arrow.svg" class="we-arrow-2" alt="Arrow">
+        </div>
+      </div>
+    `
   },
   embed: {
     title: "Map Embed & Location Integration",
@@ -1041,7 +1066,7 @@ const iconSVGs = {
   'website-embed': `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="16 10 20 10 20 14"/><polyline points="4 14 4 10 8 10"/></svg>`
 };
 
-const comingSoonFeatures = ['website-embed'];
+const comingSoonFeatures = [];
 
 document.querySelectorAll('#feature-menu li[data-feature]').forEach(li => {
   const feature = li.dataset.feature;
